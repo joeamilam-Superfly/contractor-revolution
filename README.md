@@ -122,11 +122,7 @@ The order form is in the static HTML (`data-netlify="true"`, form name `order`) 
 
 ## Screens
 
-The pictures in `public/images/app/` are **mockups with fictional sample data**, not captures of the Isom Time app.
-
-This environment could not read or run https://github.com/joeamilam-Superfly/Isom-Time-Track (GitHub returned 404). Nothing here points at a Supabase project, production or otherwise. The mockups show only the workflow described for the product: time entry, work orders, PTO, billing hours, a weekly summary, and a dashboard. Names, customers, and hours are made up. There are no pay rates.
-
-Regenerate them with `npm run screens` (needs Chrome). Replace them with real demo captures, from a local seed and not from production, when that app can be run.
+The pictures in `public/images/app/` are screenshots of the app with sample data. The app header in those shots carried an Isom Electric logo, so that bar is covered with a Contractor Revolution wordmark. The work order detail shot has no logo bar. `npm run screens` will not overwrite these files.
 
 ## What the copy will not say
 

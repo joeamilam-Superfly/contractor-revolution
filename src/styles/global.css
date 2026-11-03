@@ -314,6 +314,14 @@ p {
   align-items: start;
 }
 
+.pair.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pair.phone-only {
+  max-width: 280px;
+}
+
 .pair figure {
   margin: 0;
 }

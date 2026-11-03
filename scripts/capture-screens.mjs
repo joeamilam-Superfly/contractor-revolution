@@ -3,6 +3,11 @@ import path from "node:path";
 import puppeteer from "puppeteer-core";
 import sharp from "sharp";
 
+if (process.env.ALLOW_MOCK_SCREENS !== "1") {
+  console.error("public/images/app holds real app screenshots. Set ALLOW_MOCK_SCREENS=1 to overwrite them with mockups.");
+  process.exit(1);
+}
+
 const root = path.resolve("public");
 const appDir = path.join(root, "images", "app");
 await mkdir(appDir, { recursive: true });
