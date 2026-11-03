@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import { CONTACT } from "../../../shared/contact.mjs";
+
+const description = "Isom Technologies has the Contractor Revolution order and will follow up.";
+---
+
+<Base title="Order received" description={description} robots="noindex">
+  <div class="wrap page-hero">
+    <h1>Order received.</h1>
+    <p class="lede">
+      {CONTACT.vendor} has what you sent and will follow up at the email and phone on the order.
+    </p>
+    <p class="prose">
+      If you finished card checkout, Stripe has the payment and setup starts after it clears.
+      If card checkout was not available, no payment was taken.
+    </p>
+    <p>
+      Questions:
+      <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a>
+      {" or "}
+      <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+    </p>
+    <div class="actions">
+      <a class="button" href="/">Home</a>
+      <a class="button secondary" href="/pricing">Pricing</a>
+    </div>
+  </div>
+</Base>

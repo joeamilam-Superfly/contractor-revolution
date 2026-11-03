@@ -1,0 +1,104 @@
+[
+  {
+    "id": "dashboard",
+    "title": "Dashboard",
+    "caption": "Hours this week, open work orders, finished work that is not billed yet, and PTO waiting on an answer.",
+    "desktop": {
+      "src": "/images/app/dashboard-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample desktop dashboard for fictional Sample Contracting. Stats show 66.5 hours this week, 6 open work orders, 2 jobs not billed, and 1 PTO request waiting. The crew list names Alex Rivera, Jordan Blake, Sam Patel, Casey Nguyen, and Riley Chen on sample jobs."
+    },
+    "phone": {
+      "src": "/images/app/dashboard-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone dashboard for fictional Sample Contracting, showing 66.5 hours this week, 6 open work orders, 2 unbilled jobs, and 1 PTO request waiting."
+    }
+  },
+  {
+    "id": "time",
+    "title": "Time entry",
+    "caption": "Employees clock time to a job and a work order. The same entry is on the phone and on a desktop.",
+    "desktop": {
+      "src": "/images/app/time-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample desktop time screen. Alex Rivera is on the clock at North Warehouse on work order WO-2041 since 6:58 AM, with 6.5 hours today."
+    },
+    "phone": {
+      "src": "/images/app/time-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone time entry. Alex Rivera is clocked in on work order WO-2041 at North Warehouse, with a button to clock out."
+    }
+  },
+  {
+    "id": "work-order",
+    "title": "Work order",
+    "caption": "A scheduled work order shows the site, the crew, the scope, and the hours logged against it.",
+    "desktop": {
+      "src": "/images/app/work-order-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample work order WO-2041 for Sample Warehouse Co. at 400 North Yard. Status is in progress. The scope is 24 Cat6 drops. Alex Rivera and Jordan Blake are assigned."
+    },
+    "phone": {
+      "src": "/images/app/work-order-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone view of work order WO-2041, in progress, scheduled Tuesday November 3 at 7:00 AM for Alex Rivera and Jordan Blake."
+    }
+  },
+  {
+    "id": "pto",
+    "title": "PTO",
+    "caption": "Requests and hour balances. No pay rates on this screen.",
+    "desktop": {
+      "src": "/images/app/pto-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample PTO screen. Riley Chen has a pending vacation request for November 26 and 27. Sam Patel's December 24 to 26 request is approved. Balances are listed in hours."
+    },
+    "phone": {
+      "src": "/images/app/pto-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone PTO screen with Riley Chen's pending November request and hour balances for the fictional crew."
+    }
+  },
+  {
+    "id": "billing",
+    "title": "Billing",
+    "caption": "Completed work stays on the list until it is billed. The report is hours, not someone's pay.",
+    "desktop": {
+      "src": "/images/app/billing-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample billing report. Work orders WO-1988 and WO-2010 are completed and not billed. WO-1902 is billed. The columns are hours, not pay rates."
+    },
+    "phone": {
+      "src": "/images/app/billing-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone billing list. WO-1988 and WO-2010 are not billed. WO-1902 is billed. Totals are in hours."
+    }
+  },
+  {
+    "id": "weekly",
+    "title": "Weekly summary",
+    "caption": "Last week's hours by person, with PTO split out, marked ready for payroll.",
+    "desktop": {
+      "src": "/images/app/weekly-desktop.webp",
+      "width": 2560,
+      "height": 1520,
+      "alt": "Sample weekly summary for October 26 to November 1. Five fictional employees, daily hours, 190 hours worked, 8 hours PTO, 198 hours ready for payroll."
+    },
+    "phone": {
+      "src": "/images/app/weekly-phone.webp",
+      "width": 780,
+      "height": 1688,
+      "alt": "Sample phone weekly summary for October 26 to November 1, with each fictional employee's week total and a ready-for-payroll status of 198 hours."
+    }
+  }
+]

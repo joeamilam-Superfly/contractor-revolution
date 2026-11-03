@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import { CONTACT, ADDRESS_LINE, MAPS_URL } from "../../shared/contact.mjs";
+
+const description = "Contractor Revolution is a product of Isom Technologies, 7205 US 76, Pendleton, SC 29670. Call 864-437-1827 or email info@isomtechnologies.com.";
+---
+
+<Base title="About" description={description}>
+  <div class="wrap page-hero">
+    <p class="kicker">Product of {CONTACT.vendor}</p>
+    <h1>Built by {CONTACT.vendor}.</h1>
+    <p class="lede">
+      Contractor Revolution is a time-tracking, work order, and billing app for contractors.
+      It is a product of {CONTACT.vendor}. It is built on the same codebase as the Isom Time app.
+    </p>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="prose">
+        Each contractor gets a separate instance. Your instance is branded with your own logo and colors.
+        The system is customized to your exact processes. We set up the roster, the PINs, the jobs, and the locations,
+        then train the people who will use it.
+      </p>
+      <p class="prose">
+        {CONTACT.vendor} is in {CONTACT.locality}, {CONTACT.region}. The company also designs, installs, and tests
+        structured cabling, fiber, wireless, AV, and security infrastructure.
+        That work is described on <a href={CONTACT.vendorUrl}>isomtechnologies.com</a>.
+      </p>
+      <div class="contact-card">
+        <h2>Contact</h2>
+        <address>
+          {CONTACT.vendor}<br />
+          <a href={MAPS_URL}>{ADDRESS_LINE}</a><br />
+          <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a><br />
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br />
+          Support: <a href={`mailto:${CONTACT.supportEmail}`}>{CONTACT.supportEmail}</a>
+        </address>
+      </div>
+    </div>
+  </section>
+</Base>

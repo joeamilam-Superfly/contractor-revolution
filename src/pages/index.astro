@@ -1,0 +1,139 @@
+---
+import Base from "../layouts/Base.astro";
+import Shots from "../components/Shots.astro";
+import { PROMISES } from "../../shared/copy.mjs";
+import { CONTACT } from "../../shared/contact.mjs";
+import { TIERS, formatMoney, quote } from "../../shared/pricing.mjs";
+
+const crew = quote(10);
+const description = "Time tracking, work orders, and billing for contractors. Your own logo and colors, set up around your process. A product of Isom Technologies.";
+---
+
+<Base title="Contractor Revolution | Time, work orders, and billing" description={description}>
+  <div class="wrap hero">
+    <div>
+      <p class="kicker">A product of {CONTACT.vendor}</p>
+      <h1>Time, work orders, and billing for contractors.</h1>
+      <p class="lede">
+        Contractor Revolution keeps the hours, the work orders, and the billing in one place.
+        Your shop gets its own instance. It carries your logo and your colors, and we set it up
+        around the way you already run work.
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">See pricing</a>
+        <a class="button secondary" href="/order">Place an order</a>
+      </div>
+    </div>
+    <aside class="rate-card" aria-label="Crew price for 10 users">
+      <p class="tier">{crew.tierName} · {crew.seats} users</p>
+      <p class="price">{formatMoney(crew.monthlyFee)}</p>
+      <p>per month, no commitment</p>
+      <p>{formatMoney(crew.annualPerMonth)} a month if you pay the year up front</p>
+      <p>Setup {formatMoney(crew.setup)}, one time</p>
+      <p><a href="/pricing">All five tiers</a></p>
+    </aside>
+  </div>
+
+  <section class="section" id="short">
+    <div class="wrap">
+      <h2>The short version</h2>
+      <ol class="promises">
+        {PROMISES.map((line) => <li>{line}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="screens">
+    <div class="wrap">
+      <h2>What the work looks like</h2>
+      <p class="note">
+        These are mockups with sample data, not screenshots of the live app.
+        The shop is fictional. The names, jobs, and hours are made up. There are no pay rates in the pictures.
+        The orange is a stand-in for a customer's color.
+      </p>
+      <Shots />
+    </div>
+  </section>
+
+  <section class="section" id="included">
+    <div class="wrap">
+      <h2>What you are buying</h2>
+      <div class="feature-grid">
+        <article>
+          <h3>Time</h3>
+          <p>Employees enter their hours from the phone, on a job and a work order. The office sees the same hours.</p>
+        </article>
+        <article>
+          <h3>Work orders</h3>
+          <p>Scheduled work orders show on the phone, with the site, the crew, and the hours logged against the order.</p>
+        </article>
+        <article>
+          <h3>PTO</h3>
+          <p>Employees request PTO from the phone. Balances are kept in hours. Company setup and above loads starting balances.</p>
+        </article>
+        <article>
+          <h3>Billing</h3>
+          <p>When the work is done, it stays on a billing list until it is billed. We track every hour, and when the work is done we make sure it's billed.</p>
+        </article>
+        <article>
+          <h3>Payroll</h3>
+          <p>A closed week is a weekly summary the office can take to payroll. Payroll takes 15 minutes or less.</p>
+        </article>
+        <article>
+          <h3>Your name on it</h3>
+          <p>Your instance is branded with your own logo and colors. The system is customized to your exact processes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Setup</h2>
+      <p class="prose">
+        Setup is a one-time go-live, not a software download. It covers your logo and colors, the admin login,
+        the crew roster, PINs, jobs, and locations, then a smoke test and training. Company and above add a
+        materials catalog import and starting PTO balances. Enterprise adds data migration. Every tier includes
+        every feature. A user is anyone who logs in, in the field or in the office.
+      </p>
+      <p class="prose">
+        The price does not include payment processing, marketing tools, or a CRM. We do not sell those.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="wrap">
+      <h2>Monthly price by shop size</h2>
+      <p>These are the no-commitment monthly prices at each tier's included headcount. Annual prepay takes 15% off. Setup is separate and is not discounted.</p>
+      <ul class="price-strip">
+        {TIERS.map((tier) => (
+          <li>
+            <a href={`/order?seats=${tier.included}`}>
+              <span>{tier.name}</span>
+              <strong>{formatMoney(tier.monthly)}</strong>
+              <span>Up to {tier.included} users</span>
+              <span>Setup {tier.setupFrom ? `from ${formatMoney(tier.setup)}` : formatMoney(tier.setup)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/pricing">Full rate card, extra users, and annual prepay</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap callout">
+      <div>
+        <h2>Call {CONTACT.vendor}</h2>
+        <p>
+          <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a>
+          {" · "}
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+        </p>
+        <p>{CONTACT.street}, {CONTACT.locality}, {CONTACT.region} {CONTACT.postalCode}</p>
+      </div>
+      <a class="button" href="/order">Place an order</a>
+    </div>
+  </section>
+</Base>

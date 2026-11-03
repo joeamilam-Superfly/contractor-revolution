@@ -1,0 +1,146 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  COMPARISON,
+  JOBBER_EXTRA_USER,
+  JOBBER_PLANS,
+  JOBTREAD_RATES,
+  PRICE_CHECKED,
+  formatMoney,
+} from "../../shared/pricing.mjs";
+
+const description = "Monthly prices for Contractor Revolution, Jobber Grow, Jobber Plus, and JobTread at 5, 10, 20, 40, and 75 users. Checked November 3, 2026.";
+---
+
+<Base title="Compared with Jobber and JobTread" description={description}>
+  <div class="wrap page-hero">
+    <p class="kicker">Checked {PRICE_CHECKED}</p>
+    <h1>Compared with Jobber and JobTread</h1>
+    <p class="lede">
+      The shop-size table is no-commitment monthly price. Contractor Revolution's numbers are our rate card.
+      Jobber and JobTread numbers were taken from their pricing pages on {PRICE_CHECKED}. Competitor prices change.
+    </p>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="table-scroll">
+        <table>
+          <caption>
+            No-commitment monthly price by shop size. Jobber above 15 users is the 15-user plan plus {formatMoney(JOBBER_EXTRA_USER)} per extra user, an estimate, because Jobber asks larger teams to contact sales.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Users</th>
+              <th scope="col" class="num us">Contractor Revolution</th>
+              <th scope="col" class="num">Jobber Grow</th>
+              <th scope="col" class="num">Jobber Plus</th>
+              <th scope="col" class="num">JobTread</th>
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARISON.map((row) => (
+              <tr>
+                <th scope="row">{row.users}</th>
+                <td class="num us">{formatMoney(row.cr)}</td>
+                <td class="num">{formatMoney(row.jobberGrow)}{row.users > 15 ? "*" : ""}</td>
+                <td class="num">{formatMoney(row.jobberPlus)}{row.users > 15 ? "*" : ""}</td>
+                <td class="num">{formatMoney(row.jobtread)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">* Jobber estimate: 15-user plan plus {formatMoney(JOBBER_EXTRA_USER)} a month for each user past 15. On a small screen, swipe the table sideways.</p>
+      <h2>What the monthly numbers say</h2>
+      <p class="prose">
+        On every shop size in the table, Contractor Revolution's no-commitment monthly price is lower than Jobber Grow, Jobber Plus, and JobTread.
+        That is a monthly list-price comparison. It does not include our setup fee. Jobber and JobTread do not charge a setup fee.
+        Jobber's figures above 15 users are estimates.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What the prices do and do not include</h2>
+      <ul>
+        <li>Every Contractor Revolution tier includes every feature. A user is anyone who logs in, field or office.</li>
+        <li>Jobber sells Core, Connect, Grow, and Plus as separate plans, priced by features and by user band. This page does not guess which features sit in which Jobber plan. The source sheet does not list them.</li>
+        <li>JobTread includes every feature and prices by user count. Outside parties and light field crew are free users. On Contractor Revolution, those people count if they log in.</li>
+        <li>Jobber's extra user is {formatMoney(JOBBER_EXTRA_USER)} a month. Ours is $19, $19, $15, $12, or $8, depending on the tier.</li>
+        <li>Jobber does not charge a setup fee. It bundles onboarding by plan, values Plus onboarding at $599, and values data import at $499. Teams of 16 or more are asked to contact sales.</li>
+        <li>JobTread does not charge a setup fee, and implementation is free.</li>
+        <li>Our setup fee is the one-time go-live: logo and colors, roster, PINs, jobs, locations, a smoke test, and training. It is not waived.</li>
+        <li>Contractor Revolution does not sell payment processing, marketing tools, or a CRM.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Jobber's published plans</h2>
+      <p>Checked {PRICE_CHECKED}. Ranges are the published bands, not a price we calculated for a specific headcount.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Jobber plan prices by commitment. No-commit, one-year, and annual.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Plan</th>
+              <th scope="col">Users</th>
+              <th scope="col" class="num">No commit</th>
+              <th scope="col" class="num">1 year</th>
+              <th scope="col" class="num">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            {JOBBER_PLANS.map((plan) => (
+              <tr>
+                <th scope="row">{plan.plan}</th>
+                <td>{plan.users}</td>
+                <td class="num">{plan.monthly}</td>
+                <td class="num">{plan.oneYear}</td>
+                <td class="num">{plan.annual}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>JobTread's published rates</h2>
+      <p>Checked {PRICE_CHECKED}. The base annual price is 20% off. Added users have their own annual rates.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>JobTread monthly and annual per-user rates.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">Monthly</th>
+              <th scope="col" class="num">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            {JOBTREAD_RATES.map((row) => (
+              <tr>
+                <th scope="row">{row.item}</th>
+                <td class="num">{row.monthly}</td>
+                <td class="num">{row.annual}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">
+        Sources:
+        <a href="https://www.getjobber.com/pricing/">getjobber.com/pricing</a>
+        {" · "}
+        <a href="https://www.jobtread.com/pricing">jobtread.com/pricing</a>
+        . Both checked {PRICE_CHECKED}.
+      </p>
+    </div>
+  </section>
+</Base>

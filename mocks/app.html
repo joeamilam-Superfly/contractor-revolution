@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/400.css" />
+    <link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/600.css" />
+    <link rel="stylesheet" href="../node_modules/@fontsource/source-sans-3/700.css" />
+    <style>
+      :root {
+        --ink: #17212b;
+        --muted: #5c6b76;
+        --line: #d7dee5;
+        --bg: #eef2f5;
+        --card: #fff;
+        --side: #17212b;
+        --accent: #e07a12;
+        --teal: #0f6f6a;
+        --warn: #9f1239;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: "Source Sans 3", sans-serif; }
+      button, input, select { font: inherit; }
+      select { width: 100%; padding: 8px; margin: 4px 0 10px; background: white; border: 1px solid var(--line); border-radius: 6px; }
+      label { font-size: 13px; font-weight: 600; }
+      .phone header .pill { margin-left: auto; }
+      .desktop { display: grid; grid-template-columns: 228px 1fr; height: 100%; }
+      .side { background: var(--side); color: #e7eef3; padding: 18px 14px; display: flex; flex-direction: column; gap: 18px; }
+      .brand { display: flex; gap: 10px; align-items: center; }
+      .mark { width: 36px; height: 36px; background: var(--accent); color: #1c1308; font-weight: 700; display: grid; place-items: center; }
+      .brand strong { display: block; font-size: 15px; }
+      .brand small, .muted { color: var(--muted); }
+      .side small { color: #b7c3cc; }
+      .side nav { display: grid; gap: 4px; }
+      .side button, .tabs button { background: transparent; border: 0; color: inherit; text-align: left; padding: 8px 10px; }
+      .side button.on { background: #243744; box-shadow: inset 3px 0 0 var(--accent); }
+      .main { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+      .content { flex: 1; }
+      .app-foot { margin-top: auto; padding: 8px 20px; background: white; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+      .top { height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: white; border-bottom: 1px solid var(--line); }
+      .pill { background: #fff4e6; color: #8a4b08; border: 1px solid #f0c48a; border-radius: 99px; padding: 2px 8px; font-size: 12px; font-weight: 700; }
+      .content { padding: 16px 20px 20px; overflow: hidden; }
+      h1 { margin: 0 0 12px; font-size: 28px; line-height: 1; }
+      h2 { margin: 0 0 8px; font-size: 16px; }
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+      .stat, .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+      .stat b { display: block; font-size: 28px; line-height: 1; }
+      .stat span, .sub { color: var(--muted); font-size: 13px; }
+      .split { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 12px; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); }
+      th { color: var(--muted); font-weight: 600; font-size: 12px; }
+      .stack { display: grid; gap: 10px; }
+      .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+      .tag.work { background: #e7f6f4; color: var(--teal); }
+      .tag.wait { background: #fff4e6; color: #8a4b08; }
+      .tag.bad { background: #fde8ee; color: var(--warn); }
+      .tag.ok { background: #e7f6ea; color: #166534; }
+      .phone { height: 100%; display: flex; flex-direction: column; background: var(--bg); }
+      .phone header, .tabs { background: white; border-bottom: 1px solid var(--line); }
+      .phone header { height: 56px; display: flex; align-items: center; gap: 8px; padding: 0 12px; }
+      .phone header strong { font-size: 14px; }
+      .phone .content { flex: 1; padding: 12px; }
+      .tabs { border-top: 1px solid var(--line); border-bottom: 0; display: grid; grid-template-columns: repeat(6, 1fr); height: 62px; }
+      .tabs button { text-align: center; font-size: 11px; color: var(--muted); padding: 8px 2px; }
+      .tabs button.on { color: var(--ink); font-weight: 700; box-shadow: inset 0 -3px 0 var(--accent); }
+      .clock { background: var(--side); color: white; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+      .clock b { font-size: 34px; display: block; line-height: 1; }
+      .big-btn, .line-btn { width: 100%; border: 0; border-radius: 8px; padding: 12px; font-weight: 700; }
+      .big-btn { background: var(--accent); color: #1c1308; margin-top: 10px; }
+      .line-btn { background: white; border: 1px solid var(--line); margin-top: 8px; }
+      .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 10px; margin: 0; }
+      .kv dt { color: var(--muted); }
+      .kv dd { margin: 0; }
+      .checks { list-style: none; margin: 0; padding: 0; }
+      .checks li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); }
+      .phone .stats { grid-template-columns: 1fr 1fr; }
+      .person { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+      .person small { display: block; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const screen = new URLSearchParams(location.search).get("screen") || "dashboard";
+      const phone = window.innerWidth < 700;
+      document.documentElement.dataset.size = phone ? "phone" : "desktop";
+      document.documentElement.dataset.screen = screen;
+
+      const nav = [
+        ["dashboard", "Dashboard"],
+        ["time", "Time"],
+        ["work-order", "Work orders"],
+        ["pto", "PTO"],
+        ["billing", "Billing"],
+        ["weekly", "Weekly"],
+      ];
+      const tabs = [
+        ["dashboard", "Dash"],
+        ["time", "Time"],
+        ["work-order", "Orders"],
+        ["pto", "PTO"],
+        ["billing", "Bill"],
+        ["weekly", "Week"],
+      ];
+
+      const crew = [
+        ["Alex Rivera", "North Warehouse", "WO-2041", "6:58 AM", "6.5"],
+        ["Jordan Blake", "North Warehouse", "WO-2041", "7:02 AM", "6.0"],
+        ["Sam Patel", "Main Street", "WO-2014", "7:15 AM", "5.5"],
+        ["Casey Nguyen", "Shop", "Overhead", "8:00 AM", "4.5"],
+        ["Riley Chen", "Shop", "Overhead", "7:30 AM", "4.0"],
+      ];
+
+      function esc(value) {
+        return String(value).replace(/[&<>]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch]));
+      }
+
+      function tag(label, kind) {
+        return `<span class="tag ${kind}">${esc(label)}</span>`;
+      }
+
+      function sideNav() {
+        return nav.map(([id, label]) => `<button class="${id === screen ? "on" : ""}" type="button">${esc(label)}</button>`).join("");
+      }
+
+      function tabNav() {
+        return tabs.map(([id, label]) => `<button class="${id === screen ? "on" : ""}" type="button">${esc(label)}</button>`).join("");
+      }
+
+      function shell(title, body) {
+        if (phone) {
+          return `<div class="phone">
+            <header><span class="mark">SC</span><div><strong>Sample Contracting</strong><small class="muted"> Sample data</small></div><span class="pill">Sample</span></header>
+            <div class="content">${body}</div>
+            <nav class="tabs" aria-label="Sample app">${tabNav()}</nav>
+          </div>`;
+        }
+        return `<div class="desktop">
+          <aside class="side">
+            <div class="brand"><span class="mark">SC</span><div><strong>Sample Contracting</strong><small>Logo and colors</small></div></div>
+            <nav>${sideNav()}</nav>
+          </aside>
+          <section class="main">
+            <header class="top"><div><strong>${esc(title)}</strong><div class="muted">Tuesday, November 3, 2026</div></div><span class="pill">Sample data</span></header>
+            <div class="content">${body}</div>
+            <footer class="app-foot">Sample instance. Not a live customer.</footer>
+          </section>
+        </div>`;
+      }
+
+      function stats(items) {
+        return `<div class="stats">${items.map(([n, label]) => `<article class="stat"><b>${esc(n)}</b><span>${esc(label)}</span></article>`).join("")}</div>`;
+      }
+
+      function dashboard() {
+        const rows = crew.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("");
+        const open = [
+          ["WO-2041", "North Warehouse", "In progress"],
+          ["WO-2014", "Main Street build-out", "In progress"],
+          ["WO-2055", "Sample Clinic", "Wed Nov 4"],
+        ];
+        if (phone) {
+          return shell("Dashboard", `
+            <h1>Dashboard</h1>
+            ${stats([["66.5", "Hours this week"], ["6", "Open work orders"], ["2", "Not billed"], ["1", "PTO waiting"]])}
+            <article class="card"><h2>Payroll</h2><p>Oct 26 to Nov 1 is approved. 198 hours are ready.</p></article>
+            <article class="card"><h2>Not billed</h2><p>WO-1988 · 36.0 hours</p><p>WO-2010 · 42.5 hours</p></article>
+            <article class="card"><h2>Open</h2>${open.map((row) => `<div class="person"><span>${esc(row[0])}</span><small>${esc(row[1])}</small></div>`).join("")}<p class="sub">3 more open. 6 total.</p></article>
+          `);
+        }
+        return shell("Dashboard", `
+          <h1>Dashboard</h1>
+          ${stats([["66.5", "Hours this week"], ["6", "Open work orders"], ["2", "Completed, not billed"], ["1", "PTO waiting"]])}
+          <div class="split">
+            <article class="card">
+              <h2>Crew today</h2>
+              <table>
+                <thead><tr><th>Name</th><th>Job</th><th>Work order</th><th>In</th><th>Hours</th></tr></thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </article>
+            <div class="stack">
+              <article class="card"><h2>Payroll</h2><p>Oct 26 to Nov 1 is approved. 198 hours are ready for payroll.</p>${tag("Ready", "ok")}</article>
+              <article class="card"><h2>Needs a bill</h2><p>WO-1988 Sample School District · 36.0 hours · completed Nov 1</p><p>WO-2010 Sample Properties · 42.5 hours · completed Oct 30</p></article>
+              <article class="card"><h2>Open work orders</h2>${open.map((row) => `<p>${esc(row[0])} · ${esc(row[1])} · ${esc(row[2])}</p>`).join("")}<p class="sub">Showing 3 of 6.</p></article>
+            </div>
+          </div>
+        `);
+      }
+
+      function time() {
+        if (phone) {
+          return shell("Time", `
+            <div class="clock">
+              <span class="sub" style="color:#d5dde3">Alex Rivera · on the clock</span>
+              <b>6.5 hrs</b>
+              <p>Since 6:58 AM</p>
+              <p>North Warehouse<br>WO-2041 · IDF room</p>
+              <button class="big-btn" type="button">Clock out</button>
+            </div>
+            <article class="card">
+              <h2>Today</h2>
+              <div class="person"><span>WO-2041</span><span>6:58 AM, still in</span></div>
+              <button class="line-btn" type="button">Switch work order</button>
+            </article>
+            <article class="card">
+              <h2>Scheduled</h2>
+              <div class="person"><div>WO-2041 North Warehouse<small>Now</small></div></div>
+              <div class="person"><div>Back at the shop<small>3:30 PM</small></div></div>
+            </article>
+          `);
+        }
+        return shell("Time", `
+          <h1>Time</h1>
+          <div class="split">
+            <article class="card">
+              <h2>Clock in</h2>
+              <label>Person<br><select><option>Alex Rivera</option><option>Jordan Blake</option></select></label>
+              <p></p>
+              <label>Job<br><select><option>North Warehouse rough-in</option><option>Main Street build-out</option></select></label>
+              <p></p>
+              <label>Work order<br><select><option>WO-2041 IDF room</option><option>WO-2014 Main Street</option></select></label>
+              <p></p>
+              <button class="big-btn" type="button">Clock out Alex Rivera</button>
+              <p class="sub">On the clock since 6:58 AM. 6.5 hours today.</p>
+            </article>
+            <article class="card">
+              <h2>On the clock</h2>
+              <table>
+                <thead><tr><th>Name</th><th>Order</th><th>In</th><th>Hours</th></tr></thead>
+                <tbody>
+                  <tr><td>Alex Rivera</td><td>WO-2041</td><td>6:58 AM</td><td>6.5</td></tr>
+                  <tr><td>Jordan Blake</td><td>WO-2041</td><td>7:02 AM</td><td>6.0</td></tr>
+                  <tr><td>Sam Patel</td><td>WO-2014</td><td>7:15 AM</td><td>5.5</td></tr>
+                  <tr><td>Casey Nguyen</td><td>Overhead</td><td>8:00 AM</td><td>4.5</td></tr>
+                </tbody>
+              </table>
+              <p class="sub">Riley Chen clocked out at 11:30 AM. 4.0 hours.</p>
+            </article>
+          </div>
+        `);
+      }
+
+      function workOrder() {
+        const facts = `
+          <dl class="kv">
+            <dt>Status</dt><dd>${tag("In progress", "work")}</dd>
+            <dt>Customer</dt><dd>Sample Warehouse Co.</dd>
+            <dt>Site</dt><dd>400 North Yard, Sample City</dd>
+            <dt>Scheduled</dt><dd>Tue Nov 3, 2026, 7:00 AM</dd>
+            <dt>Crew</dt><dd>Alex Rivera, Jordan Blake</dd>
+            <dt>Scope</dt><dd>Pull and terminate 24 Cat6 drops in the IDF room. Label and test each drop.</dd>
+          </dl>`;
+        const hours = `
+          <table>
+            <thead><tr><th>Name</th><th>Today</th><th>On this order</th></tr></thead>
+            <tbody>
+              <tr><td>Alex Rivera</td><td>6.5</td><td>22.0</td></tr>
+              <tr><td>Jordan Blake</td><td>6.0</td><td>18.5</td></tr>
+            </tbody>
+          </table>`;
+        const checks = `<ul class="checks">
+          <li><span>Cable pulled</span>${tag("Done", "ok")}</li>
+          <li><span>Jacks terminated</span>${tag("In progress", "work")}</li>
+          <li><span>Labels</span>${tag("Not started", "wait")}</li>
+          <li><span>Tested</span>${tag("Not started", "wait")}</li>
+        </ul>`;
+        if (phone) {
+          return shell("Work order", `<h1>WO-2041</h1><article class="card">${facts}</article><article class="card"><h2>Hours</h2>${hours}</article><article class="card"><h2>Checklist</h2>${checks}</article>`);
+        }
+        return shell("Work order", `
+          <h1>WO-2041</h1>
+          <div class="split">
+            <article class="card">${facts}</article>
+            <div class="stack">
+              <article class="card"><h2>Hours</h2>${hours}</article>
+              <article class="card"><h2>Checklist</h2>${checks}</article>
+            </div>
+          </div>
+        `);
+      }
+
+      function pto() {
+        const balances = [
+          ["Alex Rivera", "48", "16"],
+          ["Jordan Blake", "40", "24"],
+          ["Sam Patel", "24", "16"],
+          ["Casey Nguyen", "56", "8"],
+          ["Riley Chen", "64", "24"],
+        ];
+        const table = `<table><thead><tr><th>Name</th><th>Vacation hrs</th><th>Sick hrs</th></tr></thead><tbody>${balances.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+        const requests = `
+          <article class="card"><h2>Waiting</h2><p>Riley Chen · Nov 26 to Nov 27 · 16 hours vacation</p>${tag("Pending", "wait")}</article>
+          <article class="card"><h2>Approved</h2><p>Sam Patel · Dec 24 to Dec 26 · 24 hours vacation</p>${tag("Approved", "ok")}</article>`;
+        if (phone) {
+          return shell("PTO", `<h1>PTO</h1>${requests}<article class="card"><h2>Hours on the books</h2>${table}<p class="sub">Sample balances, in hours.</p></article>`);
+        }
+        return shell("PTO", `<h1>PTO</h1><div class="split"><div class="stack">${requests}<p class="sub">Requests are made from the phone.</p></div><article class="card"><h2>Hours on the books</h2>${table}<p class="sub">Sample balances. Not pay.</p></article></div>`);
+      }
+
+      function billing() {
+        const rows = [
+          ["WO-1988", "Sample School District", "Nov 1", "36.0", tag("Not billed", "bad")],
+          ["WO-2010", "Sample Properties", "Oct 30", "42.5", tag("Not billed", "bad")],
+          ["WO-1902", "Sample Warehouse Co.", "Oct 24", "28.0", tag("Billed", "ok")],
+        ];
+        const table = `<table><thead><tr><th>Work order</th><th>Customer</th><th>Completed</th><th>Hours</th><th>Status</th></tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+        if (phone) {
+          return shell("Billing", `<h1>Billing</h1><article class="card"><p><b>78.5 hours</b> not billed</p>${rows.map((row) => `<div class="person"><div>${row[0]}<small>${row[1]}</small></div><div>${row[3]} hrs<br>${row[4]}</div></div>`).join("")}</article>`);
+        }
+        return shell("Billing", `<h1>Billing</h1><article class="card"><p>Completed work stays here until it is billed. This report is hours, not pay.</p>${table}<p><b>Not billed: 78.5 hours.</b></p></article>`);
+      }
+
+      const week = [
+        ["Alex Rivera", "8", "8", "8", "8", "8", "40", "0"],
+        ["Jordan Blake", "8", "8", "8", "8", "8", "40", "0"],
+        ["Sam Patel", "8", "8", "8", "6", "8", "38", "0"],
+        ["Casey Nguyen", "8", "8", "8", "8", "8", "40", "0"],
+        ["Riley Chen", "8", "8", "8", "8", "0", "32", "8"],
+      ];
+
+      function weekly() {
+        if (phone) {
+          return shell("Weekly", `
+            <h1>Oct 26 to Nov 1</h1>
+            <article class="card">${tag("Ready for payroll", "ok")}<p>190 hours worked. 8 hours PTO. 198 hours in the payroll run.</p>
+              ${week.map((row) => `<div class="person"><div>${esc(row[0])}<small>Mon ${row[1]}, Tue ${row[2]}, Wed ${row[3]}, Thu ${row[4]}, Fri ${row[5]}</small></div><b>${esc(row[6])}</b></div>`).join("")}
+            </article>
+          `);
+        }
+        return shell("Weekly", `
+          <h1>Week of Oct 26 to Nov 1</h1>
+          <article class="card">
+            <p>${tag("Approved", "ok")} 190 hours worked. Riley Chen has 8 hours of PTO on Friday. 198 hours are ready for payroll.</p>
+            <table>
+              <thead><tr><th>Name</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Worked</th><th>PTO</th></tr></thead>
+              <tbody>
+                ${week.map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}
+                <tr><td><b>Total</b></td><td>40</td><td>40</td><td>40</td><td>38</td><td>32</td><td><b>190</b></td><td><b>8</b></td></tr>
+              </tbody>
+            </table>
+          </article>
+        `);
+      }
+
+      const views = { dashboard, time, "work-order": workOrder, pto, billing, weekly };
+      document.getElementById("app").innerHTML = (views[screen] || dashboard)();
+    </script>
+  </body>
+</html>

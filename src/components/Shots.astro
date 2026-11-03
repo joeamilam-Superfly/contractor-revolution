@@ -1,0 +1,36 @@
+---
+import shots from "../data/screenshots.json";
+---
+
+<div>
+  {shots.map((shot, index) => (
+    <section class="shot-pair" aria-labelledby={`shot-${shot.id}`}>
+      <h3 id={`shot-${shot.id}`}>{shot.title}</h3>
+      <p>{shot.caption}</p>
+      <div class="pair">
+        <figure>
+          <img
+            src={shot.desktop.src}
+            width={shot.desktop.width}
+            height={shot.desktop.height}
+            alt={shot.desktop.alt}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+          <figcaption>Desktop, sample data</figcaption>
+        </figure>
+        <figure class="phone">
+          <img
+            src={shot.phone.src}
+            width={shot.phone.width}
+            height={shot.phone.height}
+            alt={shot.phone.alt}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Phone, sample data</figcaption>
+        </figure>
+      </div>
+    </section>
+  ))}
+</div>
