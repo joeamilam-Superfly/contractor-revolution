@@ -1,10 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
-import { company, mapUrl } from '../lib/site';
+import { company, mapUrl, productName } from '../lib/site';
 
 const title = 'About | Contractor Revolution';
 const description =
-  'Contractor Revolution is a product of Isom Technologies, 7205 US 76, Pendleton, SC 29670. Call 864-437-1827 or email info@isomtechnologies.com.';
+  'Contractor Revolution is a product created by Isom Technologies for other service businesses. Call 864-437-1827 or email info@isomtechnologies.com.';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -12,26 +12,23 @@ const crumbs = [
 ];
 ---
 
-<Base title={title} description={description} path="/about" crumbs={crumbs}>
+<Base title={title} description={description} path="/about" crumbs={crumbs} includeCreator>
   <div class="wrap page-hero">
-    <p class="kicker">Product of Isom Technologies</p>
-    <h1>Built by Isom Technologies.</h1>
+    <p class="kicker">About</p>
+    <h1>About Contractor Revolution.</h1>
     <p class="lede">
-      Contractor Revolution is a time-tracking, work order, and billing app for contractors. It is a product of Isom Technologies. It is built on the same codebase as the Isom Time app.
+      Contractor Revolution is a product created by Isom Technologies so other service-based businesses can have the same success Isom Technologies and its initial clients, Isom Electric and South Pointe Construction, have had.
     </p>
   </div>
   <section class="section">
     <div class="wrap">
       <p class="prose">
-        Each contractor gets a separate instance. Your instance is branded with your own logo and colors. The system is customized to your exact processes. We set up the roster, the PINs, the jobs, and the locations, then train the people who will use it.
-      </p>
-      <p class="prose">
-        Isom Technologies is in Pendleton, SC. The company also designs, installs, and tests structured cabling, fiber, wireless, AV, and security infrastructure. That work is described on <a href={company.url}>isomtechnologies.com</a>. Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work.
+        Each shop gets a separate instance, with its own logo and colors, set up around the way that shop already runs work. The roster, the PINs, the jobs, and the locations are loaded at setup, and the people who will use it get training.
       </p>
       <div class="contact-card">
         <h2>Contact</h2>
         <address>
-          Isom Technologies<br />
+          {productName}<br />
           <a href={mapUrl}>{company.street}, {company.locality}, {company.region} {company.postal}</a><br />
           <a href={`tel:${company.phoneTel}`}>{company.phoneDisplay}</a><br />
           <a href={`mailto:${company.email}`}>{company.email}</a><br />

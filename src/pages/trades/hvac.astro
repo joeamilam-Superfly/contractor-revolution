@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
 import type { Faq } from '../../lib/site';
 
 const title = 'HVAC time tracking and work orders | Contractor Revolution';
 const description =
-  'Work orders, crew hours, PTO, and a billing list for HVAC shops. Maintenance and changeouts stay on separate orders. A product of Isom Technologies.';
+  'Work orders, crew hours, PTO, and a billing list for HVAC shops. Maintenance and changeouts stay on separate orders.';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -37,6 +38,24 @@ const faqs: Faq[] = [
       HVAC shops lose hours when a tune-up and an install get written on the same scrap of paper. Contractor Revolution puts each one on its own work order.
     </p>
   </div>
+  <ProblemSolution
+    pains={[
+      'A tune-up and a changeout get written on the same line, and the install hours never get billed.',
+      'Friday starts with calls to the techs because the timesheets are still in the van.',
+      'The office cannot tell which job is done and which one is waiting on a part.',
+      'PTO in the busy season is a text, and payroll misses it or pays it twice.',
+      'The software on the phone was built for a different shop\'s process and logo.',
+      'The office re-keys the day into the invoice after the tech has already left.',
+    ]}
+    fixes={[
+      'Every hour is tracked against its own work order and billed. Maintenance and a changeout do not share a line.',
+      'Payroll takes 15 minutes or less. The weekly summary is the packet.',
+      'Time, PTO, and work orders all come from the phone, so the status is not in a text.',
+      'PTO is requested in hours and shows on the same weekly summary as the worked hours.',
+      'Your instance is branded with your own logo and colors, and setup follows how you already run work.',
+      'Billing reports are ready to invoice. Finished work stays on the list until it is billed.',
+    ]}
+  />
   <section class="section">
     <div class="wrap">
       <h2>What gets a work order</h2>

@@ -17,12 +17,13 @@ interface Props {
   crumbs?: Crumb[];
   faqs?: Faq[];
   robots?: string;
+  includeCreator?: boolean;
 }
 
-const { title, description, path, crumbs = [], faqs = [], robots = 'index,follow' } = Astro.props;
+const { title, description, path, crumbs = [], faqs = [], robots = 'index,follow', includeCreator = false } = Astro.props;
 const canonical = absolute(path);
 const image = `${siteUrl}${ogImage.path}`;
-const graph = pageGraph({ crumbs, faqs });
+const graph = pageGraph({ crumbs, faqs, includeCreator });
 const showCrumbs = crumbs.length > 1;
 ---
 
@@ -35,8 +36,10 @@ const showCrumbs = crumbs.length > 1;
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f3efe4" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#002458" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={productName} />
     <meta property="og:title" content={title} />

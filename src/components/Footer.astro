@@ -1,20 +1,19 @@
 ---
-import { company, mapUrl } from '../lib/site';
+import { company, mapUrl, productName } from '../lib/site';
 ---
 
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <p class="kicker">Product of Isom Technologies</p>
-      <p>
-        Contractor Revolution is time tracking, work orders, PTO, and billing for contractors. It is a product of <a href={company.url}>Isom Technologies</a>.
-      </p>
-      <p class="fine">© 2026 Isom Technologies</p>
+      <img class="footer-logo" src="/logo.png" width="483" height="120" alt="Contractor Revolution" />
+      <p class="kicker">{productName}</p>
+      <p>Time tracking, work orders, PTO, and billing for contractors. Your own logo and colors.</p>
+      <p class="fine">© 2026 {productName}</p>
     </div>
     <div>
       <h2>Contact</h2>
       <address>
-        Isom Technologies<br />
+        {productName}<br />
         <a href={mapUrl}>{company.street}<br />{company.locality}, {company.region} {company.postal}</a><br />
         <a href={`tel:${company.phoneTel}`}>{company.phoneDisplay}</a><br />
         <a href={`mailto:${company.email}`}>{company.email}</a><br />
@@ -31,7 +30,6 @@ import { company, mapUrl } from '../lib/site';
         <a href="/order">Place an order</a>
         <a href="/about">About</a>
         <a href="/faq">FAQ</a>
-        <a href={company.url}>isomtechnologies.com</a>
       </nav>
     </div>
     <div>

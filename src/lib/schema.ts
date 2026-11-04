@@ -1,18 +1,25 @@
+import { TIERS } from '../../shared/pricing.mjs';
 import { company, productDescription, productName, siteUrl, type Crumb, type Faq } from './site';
-import { tiers } from './pricing';
+
+const creatorOrg = {
+  '@type': 'Organization',
+  name: 'Isom Technologies',
+  url: 'https://isomtechnologies.com',
+};
 
 export function absolute(path: string): string {
   if (path === '/') return `${siteUrl}/`;
   return `${siteUrl}${path}`;
 }
 
-export function organizationNode() {
-  return {
+export function organizationNode(includeCreator = false) {
+  const node: Record<string, unknown> = {
     '@type': 'Organization',
-    '@id': `${company.url}/#organization`,
+    '@id': `${siteUrl}/#organization`,
     name: company.name,
-    url: company.url,
-    telephone: company.phoneTel,
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    telephone: '+1-864-437-1827',
     email: company.email,
     address: {
       '@type': 'PostalAddress',
@@ -23,10 +30,12 @@ export function organizationNode() {
       addressCountry: company.country,
     },
   };
+  if (includeCreator) node.parentOrganization = creatorOrg;
+  return node;
 }
 
-export function softwareNode() {
-  return {
+export function softwareNode(includeCreator = false) {
+  const node: Record<string, unknown> = {
     '@type': 'SoftwareApplication',
     '@id': `${siteUrl}/#software`,
     name: productName,
@@ -34,8 +43,8 @@ export function softwareNode() {
     operatingSystem: 'Web',
     url: siteUrl,
     description: productDescription,
-    provider: { '@id': `${company.url}/#organization` },
-    offers: tiers.map((tier) => ({
+    provider: { '@id': `${siteUrl}/#organization` },
+    offers: TIERS.map((tier: { name: string; included: number; monthly: number }) => ({
       '@type': 'Offer',
       name: `${tier.name}, up to ${tier.included} users`,
       price: String(tier.monthly),
@@ -45,6 +54,8 @@ export function softwareNode() {
       description: `${tier.name} is $${tier.monthly} a month with no commitment for up to ${tier.included} users. Annual prepay is 15% off. Setup is separate.`,
     })),
   };
+  if (includeCreator) node.creator = creatorOrg;
+  return node;
 }
 
 export function websiteNode() {
@@ -53,7 +64,7 @@ export function websiteNode() {
     '@id': `${siteUrl}/#website`,
     name: productName,
     url: siteUrl,
-    publisher: { '@id': `${company.url}/#organization` },
+    publisher: { '@id': `${siteUrl}/#organization` },
   };
 }
 
@@ -83,8 +94,12 @@ export function faqNode(faqs: Faq[]) {
   };
 }
 
-export function pageGraph(options: { crumbs?: Crumb[]; faqs?: Faq[] }) {
-  const graph = [organizationNode(), softwareNode(), websiteNode()];
+export function pageGraph(options: { crumbs?: Crumb[]; faqs?: Faq[]; includeCreator?: boolean }) {
+  const graph = [
+    organizationNode(options.includeCreator),
+    softwareNode(options.includeCreator),
+    websiteNode(),
+  ];
   if (options.crumbs && options.crumbs.length > 1) graph.push(breadcrumbNode(options.crumbs));
   if (options.faqs && options.faqs.length > 0) graph.push(faqNode(options.faqs));
   return {

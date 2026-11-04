@@ -196,7 +196,7 @@ export function quoteText(q, billing) {
     alt,
     note: q.note,
     setupNote: q.setupFrom
-      ? "The payment uses the $9,500 starting setup fee. If data migration runs past a standard setup, Isom will tell you the difference before that extra work starts."
+      ? "The payment uses the $9,500 starting setup fee. If data migration runs past a standard setup, we will tell you the difference before that extra work starts."
       : "",
   };
 }

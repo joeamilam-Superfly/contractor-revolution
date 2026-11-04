@@ -1,26 +1,28 @@
-export const siteUrl = 'https://contractor-revolution.co';
+import { CONTACT, MAPS_URL } from '../../shared/contact.mjs';
+import { SITE_URL } from '../../shared/site.mjs';
 
-export const productName = 'Contractor Revolution';
+export const siteUrl = SITE_URL;
+
+export const productName = CONTACT.product;
 
 export const productDescription =
-  'Time tracking, work orders, PTO, and billing for contractors. Your own logo and colors, set up around your process. A product of Isom Technologies.';
+  'Time tracking, work orders, PTO, and billing for contractors. Your own logo and colors, set up around your process.';
 
 export const company = {
-  name: 'Isom Technologies',
-  url: 'https://isomtechnologies.com',
-  phoneDisplay: '864-437-1827',
-  phoneTel: '+1-864-437-1827',
-  email: 'info@isomtechnologies.com',
-  support: 'support@isomtechnologies.com',
-  street: '7205 US 76',
-  locality: 'Pendleton',
-  region: 'SC',
-  postal: '29670',
+  name: CONTACT.product,
+  url: SITE_URL,
+  phoneDisplay: CONTACT.phoneDisplay,
+  phoneTel: CONTACT.phoneTel,
+  email: CONTACT.email,
+  support: CONTACT.supportEmail,
+  street: CONTACT.street,
+  locality: CONTACT.locality,
+  region: CONTACT.region,
+  postal: CONTACT.postalCode,
   country: 'US',
 };
 
-export const mapUrl =
-  'https://www.google.com/maps/search/?api=1&query=7205%20US%2076%2C%20Pendleton%2C%20SC%2029670';
+export const mapUrl = MAPS_URL;
 
 export const ogImage = {
   path: '/og.png',
@@ -42,10 +44,6 @@ export const customers: Customer[] = [
   {
     name: 'South Pointe Construction',
     line: 'Uses Contractor Revolution for time tracking, work orders, PTO, and billing.',
-  },
-  {
-    name: 'Isom Technologies',
-    line: 'Uses Contractor Revolution for its own low-voltage and fiber work: time tracking, work orders, PTO, and billing.',
   },
 ];
 

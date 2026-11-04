@@ -1,0 +1,25 @@
+---
+interface Props {
+  pains: string[];
+  fixes: string[];
+}
+
+const { pains, fixes } = Astro.props;
+---
+
+<section class="section" id="problem">
+  <div class="wrap">
+    <h2>The problem</h2>
+    <ol class="pain-list">
+      {pains.map((pain) => <li>{pain}</li>)}
+    </ol>
+  </div>
+</section>
+<section class="section" id="solution">
+  <div class="wrap">
+    <h2>The solution</h2>
+    <ol class="fix-list">
+      {fixes.map((fix) => <li>{fix}</li>)}
+    </ol>
+  </div>
+</section>

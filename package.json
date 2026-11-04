@@ -1,17 +1,25 @@
 {
   "name": "contractor-revolution",
-  "version": "1.0.0",
   "private": true,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "astro dev --host",
+    "build": "astro build && node scripts/test-built.mjs",
+    "preview": "astro preview --host",
+    "test": "node scripts/test-pricing.mjs && node scripts/test-checkout.mjs",
+    "screens": "node scripts/capture-screens.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
-    "@fontsource/barlow-condensed": "^5.2.8",
-    "@fontsource/source-sans-3": "^5.2.8",
-    "astro": "^5.15.0"
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.3.1",
+    "astro": "^7.4.5",
+    "stripe": "^23.1.0"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "puppeteer-core": "^25.16.0",
+    "sharp": "^0.35.5"
   }
 }

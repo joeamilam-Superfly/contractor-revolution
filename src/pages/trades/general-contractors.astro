@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
 import type { Faq } from '../../lib/site';
 
 const title = 'General contractor time tracking | Contractor Revolution';
@@ -37,6 +38,24 @@ const faqs: Faq[] = [
       South Pointe Construction uses Contractor Revolution for time tracking, work orders, PTO, and billing.
     </p>
   </div>
+  <ProblemSolution
+    pains={[
+      'Carpenter hours land on the wrong house, and that labor never shows up on the bill.',
+      'The superintendent\'s time never lands anywhere, so payroll is a stack of texts.',
+      'The job status is on a whiteboard in the trailer. The office cannot see it.',
+      'PTO is approved in a text and missed when the week is closed.',
+      'A full project system forces the crew into someone else\'s process, and the time app wears their logo.',
+      'The office re-keys field hours into the invoice after the crew has moved to the next house.',
+    ]}
+    fixes={[
+      'Every hour is tracked against a work order and billed. The house and the hours stay together.',
+      'Payroll takes 15 minutes or less. The weekly summary is what you hand over.',
+      'Time, PTO, and work orders all come from the phone, for your own crews.',
+      'PTO is requested in hours, and the balance is what the office approves against.',
+      'Your instance is branded with your own logo and colors, and it is customized to your process.',
+      'Billing reports are ready to invoice. This is the hours and the bill, not a second estimating system.',
+    ]}
+  />
   <section class="section">
     <div class="wrap">
       <h2>Built for the people on your payroll</h2>

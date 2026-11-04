@@ -1,34 +1,158 @@
 [build]
-  command = "npm run build"
+  command = "npm test && npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  # Stripe is required at runtime instead of being inlined.
+  external_node_modules = ["stripe"]
+
+# Apex to www. www is the primary host.
 [[redirects]]
-  from = "https://www.contractor-revolution.co/*"
-  to = "https://contractor-revolution.co/:splat"
+  from = "/*"
+  to = "https://www.contractor-revolution.co/:splat"
   status = 301
   force = true
 
+  [redirects.conditions]
+    Host = ["contractor-revolution.co"]
+
+# File-format builds emit pricing.html. Send those URLs to the extensionless path.
+# 404.html is not listed here, so the not-found rule does not loop.
 [[redirects]]
-  from = "https://www.contractor-revolution.co/"
-  to = "https://contractor-revolution.co/"
+  from = "/index.html"
+  to = "/"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/pricing.html"
+  to = "/pricing"
+  status = 301
+
+[[redirects]]
+  from = "/compare.html"
+  to = "/compare"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/order.html"
+  to = "/order"
+  status = 301
+
+[[redirects]]
+  from = "/order/thanks.html"
+  to = "/order/thanks"
+  status = 301
+
+[[redirects]]
+  from = "/faq.html"
+  to = "/faq"
+  status = 301
+
+[[redirects]]
+  from = "/jobber-alternative.html"
+  to = "/jobber-alternative"
+  status = 301
+
+[[redirects]]
+  from = "/jobtread-alternative.html"
+  to = "/jobtread-alternative"
+  status = 301
+
+[[redirects]]
+  from = "/trades.html"
+  to = "/trades"
+  status = 301
+
+[[redirects]]
+  from = "/trades/electrical.html"
+  to = "/trades/electrical"
+  status = 301
+
+[[redirects]]
+  from = "/trades/low-voltage.html"
+  to = "/trades/low-voltage"
+  status = 301
+
+[[redirects]]
+  from = "/trades/hvac.html"
+  to = "/trades/hvac"
+  status = 301
+
+[[redirects]]
+  from = "/trades/plumbing.html"
+  to = "/trades/plumbing"
+  status = 301
+
+[[redirects]]
+  from = "/trades/general-contractors.html"
+  to = "/trades/general-contractors"
+  status = 301
+
+[[redirects]]
+  from = "/tools.html"
+  to = "/tools"
+  status = 301
+
+[[redirects]]
+  from = "/tools/labor-burden.html"
+  to = "/tools/labor-burden"
+  status = 301
+
+[[redirects]]
+  from = "/tools/timesheet-payroll-checklist.html"
+  to = "/tools/timesheet-payroll-checklist"
+  status = 301
+
+[[redirects]]
+  from = "/resources.html"
+  to = "/resources"
+  status = 301
+
+[[redirects]]
+  from = "/resources/fully-loaded-labor-rate.html"
+  to = "/resources/fully-loaded-labor-rate"
+  status = 301
+
+[[redirects]]
+  from = "/resources/close-the-week-for-payroll.html"
+  to = "/resources/close-the-week-for-payroll"
+  status = 301
+
+[[redirects]]
+  from = "/resources/work-order-hours-that-get-billed.html"
+  to = "/resources/work-order-hours-that-get-billed"
+  status = 301
 
 [[redirects]]
   from = "/api/checkout"
-  to = "/.netlify/functions/checkout"
+  to = "/.netlify/functions/create-checkout"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
 [[headers]]
   for = "/*"
   [headers.values]
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    X-Frame-Options = "SAMEORIGIN"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self' https://checkout.stripe.com; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
 
 [[headers]]
   for = "/_astro/*"
@@ -43,16 +167,4 @@
 [[headers]]
   for = "/og.png"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/llms.txt"
-  [headers.values]
-    Content-Type = "text/plain; charset=utf-8"
-    X-Robots-Tag = "index, follow"
-
-[[headers]]
-  for = "/llms-full.txt"
-  [headers.values]
-    Content-Type = "text/plain; charset=utf-8"
-    X-Robots-Tag = "index, follow"
+    Cache-Control = "public, max-age=86400"

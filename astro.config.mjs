@@ -1,15 +1,16 @@
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import { SITE_URL } from "./shared/site.mjs";
 
 export default defineConfig({
-  site: 'https://contractor-revolution.co',
-  trailingSlash: 'never',
+  site: SITE_URL,
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/order/thanks') && !page.endsWith('/404'),
+      filter: (page) => !page.includes("/order/thanks"),
     }),
   ],
-  build: {
-    inlineStylesheets: 'auto',
-  },
 });

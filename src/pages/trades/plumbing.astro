@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
 import type { Faq } from '../../lib/site';
 
 const title = 'Plumbing time tracking and billing | Contractor Revolution';
 const description =
-  'Plumbing work orders with hours attached, PTO from the phone, and a weekly summary for payroll. Unbilled jobs stay on the list. From Isom Technologies.';
+  'Plumbing work orders with hours attached, PTO from the phone, and a weekly summary for payroll. Unbilled jobs stay on the list.';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -37,6 +38,24 @@ const faqs: Faq[] = [
       A plumbing day falls apart in the office when every hour is "on the van." Contractor Revolution asks for the work order, so the address and the hours stay together.
     </p>
   </div>
+  <ProblemSolution
+    pains={[
+      'Four calls in a day get written as "8 hours, van," and the small jobs never get billed.',
+      'Payroll takes the afternoon because the plumber\'s timesheet is a notebook in the truck.',
+      'The office does not know which address is done and which one is still open.',
+      'A half day of PTO gets lost, then turns into an argument on Friday.',
+      'The app the crew is told to use was built for a different company\'s brand.',
+      'Someone in the office retypes every call into the billing file.',
+    ]}
+    fixes={[
+      'Every hour is tracked against a work order and billed. Each call gets its own order.',
+      'Payroll takes 15 minutes or less, from the weekly summary of regular, overtime, and leave.',
+      'Time, PTO, and work orders all come from the phone, with the address on the order.',
+      'PTO is requested in hours and approved before the week is sent to payroll.',
+      'Your instance carries your logo and your colors, set up around the way you already run calls.',
+      'Billing reports are ready to invoice. Paying the crew does not clear the billing list.',
+    ]}
+  />
   <section class="section">
     <div class="wrap">
       <h2>Service work and longer jobs</h2>

@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
 import type { Faq } from '../../lib/site';
 
 const title = 'Low-voltage and fiber time tracking | Contractor Revolution';
 const description =
-  'Time tracking, work orders, PTO, and billing for low-voltage and fiber crews. Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work.';
+  'Time tracking, work orders, PTO, and billing for low-voltage and fiber crews. Hours stay on the pull until the job is billed.';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -15,16 +16,16 @@ const crumbs = [
 
 const faqs: Faq[] = [
   {
-    q: 'Does Isom Technologies use Contractor Revolution on its own jobs?',
-    a: 'Yes. Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work: time tracking, work orders, PTO, and billing.',
-  },
-  {
     q: 'Can more than one tech log time on the same pull?',
     a: 'Yes. A work order holds the site, the assigned lead, the rest of the crew, and the hours each person logs.',
   },
   {
-    q: 'Is this the same company as Isom Electric?',
-    a: 'No. Isom Technologies builds Contractor Revolution and also does low-voltage and fiber work. Isom Electric is an electrical contractor and a separate user of the product.',
+    q: 'What if the job pauses for another trade?',
+    a: 'The hours stay on the work order. Finished work moves to the billing list. Open work stays open. Payroll does not clear either list.',
+  },
+  {
+    q: 'Does the phone show the scheduled work?',
+    a: 'Yes. The scheduled work order, the site, and the hours logged against it are on the phone.',
   },
 ];
 ---
@@ -34,9 +35,27 @@ const faqs: Faq[] = [
     <p class="kicker">Low voltage and fiber</p>
     <h1>Hours on the pull, not in a group text.</h1>
     <p class="lede">
-      Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work: time tracking, work orders, PTO, and billing.
+      A pull with three people and one group text is how hours go missing. Each person logs time to the same work order, from the phone.
     </p>
   </div>
+  <ProblemSolution
+    pains={[
+      'The lead, the pullers, and the person terminating all text their hours, and the bill comes up short.',
+      'Payroll is a pile of messages because the crew never wrote the day down in one place.',
+      'Nobody can say whether the labels and the test are done, because the status is in a thread.',
+      'PTO gets approved in a text and missed on the weekly total.',
+      'The time app on the phone is branded for a different trade.',
+      'The office retypes the pull into an invoice after the crew has already left the site.',
+    ]}
+    fixes={[
+      'Every hour is tracked against that work order and billed. Several people can log time on the same order.',
+      'Payroll takes 15 minutes or less, from the weekly summary.',
+      'Time, PTO, and work orders all come from the phone, including the site and who is on the crew.',
+      'PTO requests and hour balances are in the same place the office closes the week.',
+      'The instance carries your logo and your colors, set up around how you already run a pull.',
+      'Billing reports are ready to invoice when the work is actually done.',
+    ]}
+  />
   <section class="section">
     <div class="wrap">
       <h2>One work order, several people</h2>
@@ -59,7 +78,7 @@ const faqs: Faq[] = [
       </p>
       <div class="actions">
         <a class="button" href="/pricing">See pricing</a>
-        <a class="button secondary" href="/about">About Isom Technologies</a>
+        <a class="button secondary" href="/pricing">See pricing</a>
       </div>
     </div>
   </section>

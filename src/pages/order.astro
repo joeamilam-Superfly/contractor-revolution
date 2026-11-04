@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 
 const title = 'Order | Contractor Revolution';
 const description =
-  'Pick a seat count, see the tier, extra users, setup fee, and monthly or annual total, then send the order to Isom Technologies.';
+  'Pick a seat count, see the tier, extra users, setup fee, and monthly or annual total, then send the order.';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -101,15 +101,15 @@ const crumbs = [
         <textarea id="notes" name="notes" maxlength="480"></textarea>
       </div>
       <p id="pay-note">
-        Sending the order stores it for Isom Technologies. If card checkout is available, the button takes you to Stripe to pay the setup fee and the first period. If it is not, no payment is taken and Isom follows up.
+        Sending the order stores it. If card checkout is available, the button takes you to Stripe to pay the setup fee and the first period. If it is not, no payment is taken and we follow up.
       </p>
       <button id="place-order" type="submit">Place order</button>
       <noscript>
-        <p>The total above starts at 10 users. Without JavaScript it will not follow the seat count. Isom Technologies will price the number you enter.</p>
+        <p>The total above starts at 10 users. Without JavaScript it will not follow the seat count. We will price the number you enter.</p>
       </noscript>
     </div>
   </form>
   <script>
-    import '../scripts/order.ts';
+    import '../scripts/order.js';
   </script>
 </Base>

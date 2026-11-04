@@ -1,13 +1,15 @@
 :root {
-  --ink: #1c1915;
-  --muted: #4a453c;
-  --paper: #f3efe4;
-  --paper-2: #e6dfd0;
-  --card: #faf7f1;
-  --line: #d3c9b6;
-  --rust: #8d2f14;
-  --rust-dark: #6f240f;
-  --on-rust: #fffaf6;
+  --navy: #002458;
+  --orange: #ff5500;
+  --ink: #002458;
+  --muted: #3a4d66;
+  --paper: #ffffff;
+  --paper-2: #f3f5f9;
+  --card: #ffffff;
+  --line: #d5dde8;
+  --rust: #002458;
+  --rust-dark: #001a40;
+  --on-rust: #ffffff;
   --max: 1120px;
   --display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --body: "Source Sans 3", "Segoe UI", sans-serif;
@@ -47,7 +49,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 3px solid var(--rust);
+  outline: 3px solid var(--orange);
   outline-offset: 3px;
 }
 
@@ -72,9 +74,9 @@ a:hover {
 
 .site-header {
   z-index: 10;
-  border-top: 8px solid var(--rust);
+  border-top: 8px solid var(--orange);
   border-bottom: 1px solid var(--line);
-  background: #f3efe4f0;
+  background: #fffffff0;
   position: sticky;
   top: 0;
 }
@@ -89,25 +91,22 @@ a:hover {
 
 .wordmark {
   color: var(--ink);
-  font-family: var(--display);
-  letter-spacing: 0.01em;
   align-items: center;
-  gap: 0.7rem;
-  font-size: 1.7rem;
-  font-weight: 700;
-  line-height: 1;
+  line-height: 0;
   text-decoration: none;
   display: inline-flex;
 }
 
-.mark {
-  background: var(--rust);
-  width: 2.1rem;
-  height: 2.1rem;
-  color: var(--on-rust);
-  place-items: center;
-  font-size: 1.05rem;
-  display: grid;
+.wordmark img,
+.footer-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.footer-logo {
+  height: 64px;
+  margin-bottom: 0.8rem;
 }
 
 .nav-links {
@@ -123,7 +122,7 @@ a:hover {
 }
 
 .nav-links a[aria-current="page"] {
-  box-shadow: inset 0 -2px 0 var(--rust);
+  box-shadow: inset 0 -2px 0 var(--orange);
 }
 
 .nav-toggle {
@@ -225,7 +224,7 @@ p {
 .kicker {
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--rust-dark);
+  color: var(--orange);
   margin: 0 0 0.6rem;
   font-size: 0.82rem;
   font-weight: 700;
@@ -245,7 +244,7 @@ p {
 }
 
 .rate-card a {
-  color: #f0c7b4;
+  color: #ffffff;
 }
 
 .rate-card .tier {
@@ -261,6 +260,7 @@ p {
   font-size: 5rem;
   font-weight: 600;
   line-height: 0.85;
+  color: var(--orange);
 }
 
 .rate-card p {
@@ -297,9 +297,46 @@ p {
 .note,
 .callout-note {
   background: var(--paper-2);
-  border-left: 4px solid var(--rust);
+  border-left: 4px solid var(--orange);
   max-width: 75ch;
   padding: 0.9rem 1rem;
+}
+
+.pain-list,
+.fix-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  counter-reset: item;
+}
+
+.pain-list li,
+.fix-list li {
+  background: var(--paper-2);
+  border-left: 4px solid var(--orange);
+  padding: 0.85rem 1rem;
+  margin: 0;
+  counter-increment: item;
+}
+
+.pain-list li::before,
+.fix-list li::before {
+  content: counter(item) ". ";
+  font-weight: 700;
+}
+
+.fix-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--navy);
+}
+
+.pain-list strong,
+.fix-list strong {
+  display: block;
+  margin-bottom: 0.15rem;
 }
 
 .shot-pair {
@@ -428,7 +465,7 @@ p {
 }
 
 .callout a {
-  color: #f0c7b4;
+  color: #ffffff;
 }
 
 .table-scroll {
@@ -576,7 +613,7 @@ th.us {
 .quote-kicker {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--rust-dark);
+  color: var(--orange);
   margin: 0;
   font-size: 0.78rem;
   font-weight: 700;
@@ -805,8 +842,8 @@ dl.lines dd {
 }
 
 @media (width <= 760px) {
-  .wordmark {
-    font-size: 1.25rem;
+  .wordmark img {
+    height: 40px;
   }
 
   .nav-links {

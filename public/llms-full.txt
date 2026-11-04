@@ -2,11 +2,9 @@
 
 Last updated: 2026-11-04.
 
-Contractor Revolution is a time tracking, work order, PTO, and billing app for trade contractors. It is a product of Isom Technologies, 7205 US 76, Pendleton, SC 29670. Phone 864-437-1827. Email info@isomtechnologies.com. Support email support@isomtechnologies.com. Company site https://isomtechnologies.com. Product site https://contractor-revolution.co.
+Contractor Revolution is a time tracking, work order, PTO, and billing app for trade contractors. Phone 864-437-1827. Email info@isomtechnologies.com. Support email support@isomtechnologies.com. Address 7205 US 76, Pendleton, SC 29670. Product site https://www.contractor-revolution.co.
 
-Each contractor gets a separate instance. The instance is branded with that contractor's logo and colors. Setup customizes it around the processes the shop already uses. It is built on the same codebase as the Isom Time app.
-
-Isom Technologies also designs, installs, and tests structured cabling, fiber, wireless, AV, and security infrastructure. That field work is described on isomtechnologies.com. Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work.
+Each contractor gets a separate instance. The instance is branded with that contractor's logo and colors. Setup customizes it around the processes the shop already uses.
 
 ## Who uses it
 
@@ -14,9 +12,20 @@ These are the real users as of November 2026. Do not add quotes, ratings, headco
 
 - Isom Electric is an electrical contractor. Isom Electric uses Contractor Revolution for time tracking, work orders, PTO, and billing.
 - South Pointe Construction uses Contractor Revolution for time tracking, work orders, PTO, and billing.
-- Isom Technologies uses Contractor Revolution for its own low-voltage and fiber work: time tracking, work orders, PTO, and billing.
 
-Isom Electric and Isom Technologies are not the same company. Isom Technologies makes the product and does low-voltage and fiber work. Isom Electric is an electrical contractor that uses the product.
+## The problem and the fix
+
+Hours worked never get billed when paper timesheets and texts get lost. Every hour is tracked against a work order and billed.
+
+Payroll takes hours when the office chases crews. Payroll takes 15 minutes or less.
+
+Work orders live in texts, whiteboards, and email. Time, PTO, and work orders all come from the phone.
+
+PTO requests get lost. Requests are made from the phone and approved in hours.
+
+Off-the-shelf apps force someone else's process and brand. The instance uses the shop's logo and colors, and it is customized to that shop's process.
+
+Office staff re-key field data into billing. Billing reports are ready to invoice.
 
 ## What a user is
 
@@ -64,9 +73,9 @@ How a seat count picks a tier. Seats past the included count are extra users at 
 - 57 users move up to Enterprise. Pro plus 17 extra users would be $733, and Enterprise is $729.
 - 80 users is Enterprise: 75 included and 5 extra at $8 each, $769 a month before setup.
 
-Setup pays for logo and colors, admin login, crew roster, PINs, jobs, locations, a smoke test, and training. Company and above add a materials catalog import and starting PTO balances. Enterprise adds data migration. If data migration runs past a standard setup, Isom tells the customer the difference before that extra work starts. The order form's Enterprise payment uses the $9,500 starting setup fee.
+Setup pays for logo and colors, admin login, crew roster, PINs, jobs, locations, a smoke test, and training. Company and above add a materials catalog import and starting PTO balances. Enterprise adds data migration. If data migration runs past a standard setup, we tell the customer the difference before that extra work starts. The order form's Enterprise payment uses the $9,500 starting setup fee.
 
-Ordering. The order page prices a seat count from 1 to 200 and sends the company, contact, email, phone, and notes to Isom Technologies. Card checkout is not turned on unless Stripe is configured. If it is not, no payment is taken and Isom follows up. Call 864-437-1827 or email info@isomtechnologies.com.
+Ordering. The order page prices a seat count from 1 to 200 and sends the company, contact, email, phone, and notes. Card checkout runs when Stripe is configured. If it is not, no payment is taken and we follow up. Call 864-437-1827 or email info@isomtechnologies.com.
 
 ## Jobber and JobTread, pricing as of November 2026
 
@@ -112,7 +121,7 @@ Eleven steps: confirm the payroll week, account for every person, put hours on a
 ## Trade pages
 
 - Electrical: https://contractor-revolution.co/trades/electrical (Isom Electric)
-- Low voltage and fiber: https://contractor-revolution.co/trades/low-voltage (Isom Technologies' own work)
+- Low voltage and fiber: https://www.contractor-revolution.co/trades/low-voltage
 - HVAC: https://contractor-revolution.co/trades/hvac
 - Plumbing: https://contractor-revolution.co/trades/plumbing
 - General contractors: https://contractor-revolution.co/trades/general-contractors (South Pointe Construction)
