@@ -1,0 +1,37 @@
+---
+import { CONTACT, ADDRESS_LINE, MAPS_URL } from "../../shared/contact.mjs";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="kicker">Product of {CONTACT.vendor}</p>
+      <p>
+        Contractor Revolution is time tracking, work orders, and billing for contractors.
+        It is a product of <a href={CONTACT.vendorUrl}>{CONTACT.vendor}</a>.
+      </p>
+      <p class="fine">© {new Date().getFullYear()} {CONTACT.vendor}</p>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <address>
+        {CONTACT.vendor}<br />
+        <a href={MAPS_URL}>{CONTACT.street}<br />{CONTACT.locality}, {CONTACT.region} {CONTACT.postalCode}</a><br />
+        <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a><br />
+        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br />
+        <a href={`mailto:${CONTACT.supportEmail}`}>{CONTACT.supportEmail}</a>
+      </address>
+    </div>
+    <div>
+      <h2>On this site</h2>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/pricing">Pricing</a>
+        <a href="/compare">Compared with Jobber and JobTread</a>
+        <a href="/order">Place an order</a>
+        <a href="/about">About</a>
+        <a href={CONTACT.vendorUrl}>isomtechnologies.com</a>
+      </nav>
+    </div>
+  </div>
+  <p class="wrap fine">{ADDRESS_LINE}</p>
+</footer>

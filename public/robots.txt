@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.contractor-revolution.co/sitemap-index.xml

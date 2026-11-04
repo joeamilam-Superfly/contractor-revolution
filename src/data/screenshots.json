@@ -1,0 +1,85 @@
+[
+  {
+    "id": "team",
+    "title": "Team",
+    "caption": "The week’s crew, with hours logged and the work order each person is on.",
+    "desktop": {
+      "src": "/images/app/dashboard-desktop.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Team list for November 1 to 7. Avery Quinn, foreman, 16 hours on work order 2041, North Warehouse data drops. Morgan Hale, admin, 12 hours on the same order. Parker Solis, 16 hours on work order 2112, Cedar School library circuits. Reese Calder, 16 hours on work order 1988, Riverside Clinic lighting. Rowan Ellis and Skyler Brooks, 16 hours each, on work order 2041."
+    }
+  },
+  {
+    "id": "time",
+    "title": "Time entry",
+    "caption": "Scheduled work and today’s hours, logged from the phone against a work order.",
+    "phone": {
+      "src": "/images/app/time-phone.webp",
+      "width": 390,
+      "height": 844,
+      "alt": "Phone time entry for Tuesday, November 3. North Warehouse is scheduled. A draft segment from 8:00 to 14:00 is 6 hours on work order 2041, North Warehouse data drops, with foreman Avery Quinn. The note says office check and material count."
+    }
+  },
+  {
+    "id": "work-order-list",
+    "title": "Work orders",
+    "caption": "Open work orders, split into ones that need a crew and ones that are ready to bill.",
+    "desktop": {
+      "src": "/images/app/work-order-list-desktop.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Work order list. WO 2200 at Riverside Clinic is unassigned. WO 2010, Cedar School Gym, and WO 1988, Riverside Clinic, are ready to bill. WO 2112, Cedar School library circuits, is assigned to Parker Solis. WO 2041, North Warehouse data drops, is assigned to Rowan Ellis and a crew."
+    },
+    "phone": {
+      "src": "/images/app/work-order-list-phone.webp",
+      "width": 390,
+      "height": 844,
+      "alt": "Phone work order list. WO 2200 at Riverside Clinic is unassigned. WO 2010, Cedar School Gym, is ready to bill and assigned to Parker Solis."
+    }
+  },
+  {
+    "id": "work-order",
+    "title": "Work order",
+    "caption": "Location, schedule, crew, and the hours already logged on the order.",
+    "phone": {
+      "src": "/images/app/work-order-phone.webp",
+      "width": 390,
+      "height": 844,
+      "alt": "Work order 2041 at North Warehouse, received October 27 and scheduled November 3. Assigned to Rowan Ellis, with Avery Quinn on the crew. The job is to pull 24 Cat6 runs from the MDF to the new office wing and label both ends. Time logged is 132 hours, including entries from Avery Quinn, Rowan Ellis, and Morgan Hale."
+    }
+  },
+  {
+    "id": "pto",
+    "title": "PTO",
+    "caption": "Leave requests from the phone, and the hour balance the office approves.",
+    "desktop": {
+      "src": "/images/app/pto-desktop.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Leave screen. The 2026 allotment is 80 hours, with 0 used and 80 remaining. Reese Calder has a pending request for November 26 and 27, 8 hours a day, reason out of town for a family visit. Morgan Hale has a request for November 27."
+    }
+  },
+  {
+    "id": "billing",
+    "title": "Billing",
+    "caption": "When the work is done, the hours stay on the billing report until they are billed.",
+    "desktop": {
+      "src": "/images/app/billing-desktop.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Billing report for October 1 to October 31, 2026. Total labor is 208 hours and total billed is $17,680. Cedar School Gym, work order 2010, is 48 hours and $4,080. Maple Retail fit-out, work order 1902, is 32 hours and $2,720."
+    }
+  },
+  {
+    "id": "weekly",
+    "title": "Weekly summary",
+    "caption": "The week’s hours in one place, ready to export for payroll.",
+    "desktop": {
+      "src": "/images/app/weekly-desktop.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Weekly summary for October 25 to 31. The team has 204 regular hours, 4 overtime hours, 8 leave hours, and 216 total paid hours. Six employees are active. Avery Quinn has 40 hours, Rowan Ellis 44 hours, and Parker Solis 40 hours."
+    }
+  }
+]
