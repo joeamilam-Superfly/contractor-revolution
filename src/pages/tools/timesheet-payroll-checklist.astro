@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'Timesheet to payroll checklist | Contractor Revolution';
+const description =
+  'A free checklist to close contractor timesheets for payroll: missing hours, overtime, PTO, and a total that matches. Print it. No account.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Tools', path: '/tools' },
+  { name: 'Payroll checklist', path: '/tools/timesheet-payroll-checklist' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Does this checklist set my overtime rule?',
+    a: 'No. Daily overtime, weekly overtime, and prevailing wage are your rule and your location. The checklist only asks you to flag overtime before the file leaves the office.',
+  },
+  {
+    q: 'Is payroll the same as billing?',
+    a: 'No. Payroll pays the person. Billing charges the job. Closing the week should not mark work orders billed, and billing a job should not change the hours already paid.',
+  },
+  {
+    q: 'Where are the checks saved?',
+    a: 'In this browser only, so you can leave and come back. Clearing site data clears the checks. Use print if you want a paper copy for the payroll folder.',
+  },
+];
+
+const items = [
+  {
+    id: 'week',
+    title: 'Confirm the week the payroll company uses',
+    text: 'Sunday to Saturday and Monday to Sunday are both common. Close the same days the payroll file expects.',
+  },
+  {
+    id: 'people',
+    title: 'Every person is accounted for',
+    text: 'Each person who should be paid has hours, or a recorded day off. A blank name is a missing timesheet, not a zero.',
+  },
+  {
+    id: 'job',
+    title: 'Hours sit on a work order or an overhead code',
+    text: 'Shop time, drive time you pay, and job time should not share a blank line. If you cannot name the job, it is not ready.',
+  },
+  {
+    id: 'notes',
+    title: 'Hours that do not match the schedule have a note',
+    text: 'A short note is enough: rained out, extra helper, sent to another site. The office should not have to call to learn that.',
+  },
+  {
+    id: 'ot',
+    title: 'Overtime is flagged before the file goes out',
+    text: 'Apply the rule your company already uses. Do not invent one on Friday afternoon.',
+  },
+  {
+    id: 'pto',
+    title: 'PTO for the week is approved or denied',
+    text: 'Approved leave is in the paid total. Denied leave is not. Pending requests are not done.',
+  },
+  {
+    id: 'reason',
+    title: 'Someone far over their usual hours has a reason',
+    text: 'A 60-hour week can be real. It should not be a duplicate entry.',
+  },
+  {
+    id: 'sum',
+    title: 'The team total matches the sum of the people',
+    text: 'Add regular, overtime, and leave. If the footer does not match the rows, fix the rows.',
+  },
+  {
+    id: 'export',
+    title: 'Write down regular, overtime, and leave per person',
+    text: 'That is the packet for payroll. Keep a copy with the week dates on it.',
+  },
+  {
+    id: 'send',
+    title: 'Send it, and keep the copy',
+    text: 'Payroll gets one file. You keep one. Do not edit the week after you send it unless payroll sends it back.',
+  },
+  {
+    id: 'bill',
+    title: 'Unbilled job hours stay on the billing list',
+    text: 'Paying the crew does not mean the customer was billed. Finished work orders stay open for billing until they are billed.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/tools/timesheet-payroll-checklist" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Free tool</p>
+    <h1>Timesheet to payroll, in order.</h1>
+    <p class="lede">
+      Close the week the same way every Friday. Check the box, print the page, and put it with the payroll file. This does not submit payroll for you.
+    </p>
+    <p id="check-count" class="kicker">0 of 11 checked</p>
+    <div class="actions no-print">
+      <button type="button" class="button" id="check-print">Print checklist</button>
+      <button type="button" class="button secondary" id="check-reset">Clear checks</button>
+    </div>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <ul class="check-list" id="payroll-checks">
+        {
+          items.map((item, index) => (
+            <li>
+              <label for={item.id}>
+                <input id={item.id} type="checkbox" />
+                <span>
+                  <strong>{index + 1}. {item.title}</strong>
+                  <p>{item.text}</p>
+                </span>
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="prose">
+        The same close is written out in <a href="/resources/close-the-week-for-payroll">how to close the week for payroll</a>. Contractor Revolution's weekly summary is built to be that packet: regular, overtime, leave, and total paid hours.
+      </p>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+  <script>
+    import '../../scripts/checklist.ts';
+  </script>
+</Base>

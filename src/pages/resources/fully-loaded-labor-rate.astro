@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'How to figure a fully loaded labor rate | Contractor Revolution';
+const description =
+  'A practical way to turn a contractor base wage into a fully loaded hourly cost: taxes, workers comp, benefits, and PTO, without counting PTO twice.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Fully loaded labor rate', path: '/resources/fully-loaded-labor-rate' },
+];
+---
+
+<Base title={title} description={description} path="/resources/fully-loaded-labor-rate" crumbs={crumbs}>
+  <article class="wrap page-hero article">
+    <p class="kicker">Article</p>
+    <h1>How to figure a fully loaded labor rate.</h1>
+    <p class="lede">
+      The wage on the offer letter is not the cost of an hour on a job. This is the arithmetic, with one made-up example you can type into the calculator. It is not a survey and it is not a billing rate.
+    </p>
+  </article>
+  <section class="section">
+    <div class="wrap article">
+      <h2>Start with hours you actually pay</h2>
+      <p>
+        Write down the base hourly wage and the hours you pay in a year. If the person is paid for 40 hours a week and 52 weeks, that is 2,080 hours. If your year includes a paid shutdown or you only pay hours worked, use that number instead. Do not use 2,080 just because it is round.
+      </p>
+      <p>
+        Annual wages are wage times those hours. A $30 wage times 2,080 hours is $62,400. That $62,400 already includes holiday and vacation if you pay those hours. Remember that. It matters in the PTO step.
+      </p>
+      <h2>Add the costs that sit on wages</h2>
+      <p>
+        Employer Social Security is 6.2% and employer Medicare is 1.45%, which is 7.65% combined, on wages under the Social Security wage base. The wage base changes. Above it, Social Security stops and Medicare does not. Federal unemployment and state unemployment are extra, and the state rate is on your notice, not in this article.
+      </p>
+      <p>
+        Workers comp is a percent of wages on your policy. It is not the same for a plumber and an office manager. Use the class code you were quoted. If you do not have it in front of you, leave it out and label the result "without comp" so you do not bid with a hole in it.
+      </p>
+      <p>
+        In the example, 7.65% tax on $62,400 is $4,773.60. An example comp rate of 8% is $4,992. That 8% is a number typed into the example. It is not a typical rate for your trade.
+      </p>
+      <h2>Add benefits in dollars</h2>
+      <p>
+        Health insurance, a retirement match, and boot or tool allowances you pay are dollars per year, not a percent you guess. If the company pays $500 a month toward a health plan, that is $6,000. If the employee pays the whole premium, it is not your cost.
+      </p>
+      <p>
+        Other annual cost is the truck, the phone, and the small tools if you want them inside the labor rate. If you already put the truck on the bid as equipment, leave it out here. Counting it in both places makes the job look more expensive than it is, and you will lose work you could have done.
+      </p>
+      <h2>Do not pay PTO twice</h2>
+      <p>
+        Paid time off is already inside annual wages, because you multiplied the wage by hours you pay, including hours not on a job. The only adjustment is the denominator. Productive hours are hours you pay minus PTO hours not worked.
+      </p>
+      <p>
+        Example: 80 hours of PTO. Productive hours are 2,080 minus 80, which is 2,000. You do not add another $30 times 80 on top of the $62,400.
+      </p>
+      <h2>Divide, then stop before profit</h2>
+      <p>
+        Example annual cost is $62,400 wages + $4,773.60 tax + $4,992 comp + $6,000 benefits. That is $78,165.60. Per paid hour it is $37.58. Per hour you can put on a job it is $39.08.
+      </p>
+      <p>
+        $39.08 is cost. A billing rate is that cost plus the margin you choose, and this article will not choose it. Overhead you did not put in the "other" box is also still missing. If you add a company overhead percent later, do not also stuff rent into the labor line.
+      </p>
+      <p>
+        Use the <a href="/tools/labor-burden">labor burden calculator</a> with your wage, your comp rate, and your PTO. Contractor Revolution does not calculate this rate for you inside the app. It does keep the hours, by person and by work order, so the rate you pick has real hours under it.
+      </p>
+    </div>
+  </section>
+</Base>

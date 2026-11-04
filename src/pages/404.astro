@@ -1,15 +1,20 @@
 ---
-import Base from "../layouts/Base.astro";
+import Base from '../layouts/Base.astro';
+
+const title = 'Page not found | Contractor Revolution';
+const description = 'That page is not on the Contractor Revolution site. Pricing, trades, and the order form are linked from here.';
 ---
 
-<Base title="Page not found" description="That page is not on Contractor Revolution." robots="noindex">
+<Base title={title} description={description} path="/404" robots="noindex">
   <div class="wrap page-hero">
     <h1>That page is not here.</h1>
-    <p class="lede">The pricing, the comparison, and the order form are still on the site.</p>
-    <div class="actions">
-      <a class="button" href="/">Home</a>
-      <a class="button secondary" href="/pricing">Pricing</a>
-      <a class="button secondary" href="/order">Order</a>
-    </div>
+    <p class="lede">The link may be old. The rest of the site is below.</p>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/trades">Trades</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/order">Order</a></li>
+    </ul>
   </div>
 </Base>

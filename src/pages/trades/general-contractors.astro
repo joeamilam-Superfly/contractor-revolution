@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'General contractor time tracking | Contractor Revolution';
+const description =
+  'Time tracking, work orders, PTO, and billing for a general contractor crew. South Pointe Construction uses Contractor Revolution.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+  { name: 'General contractors', path: '/trades/general-contractors' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Does South Pointe Construction use Contractor Revolution?',
+    a: 'Yes. South Pointe Construction uses Contractor Revolution for time tracking, work orders, PTO, and billing.',
+  },
+  {
+    q: 'Do subcontractors get a login?',
+    a: 'Only if you give them one. Anyone who logs in is a paid user, including a superintendent or an office person. Contractor Revolution does not include a free subcontractor portal.',
+  },
+  {
+    q: 'Is this a full project schedule?',
+    a: 'No. It is not estimating, selections, a homeowner portal, or a schedule with task dependencies. It is hours, PTO, work orders, and the billing list for your own people.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades/general-contractors" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">General contractors</p>
+    <h1>Your crews' hours, on the work order.</h1>
+    <p class="lede">
+      South Pointe Construction uses Contractor Revolution for time tracking, work orders, PTO, and billing.
+    </p>
+  </div>
+  <ProblemSolution
+    pains={[
+      'Carpenter hours land on the wrong house, and that labor never shows up on the bill.',
+      'The superintendent\'s time never lands anywhere, so payroll is a stack of texts.',
+      'The job status is on a whiteboard in the trailer. The office cannot see it.',
+      'PTO is approved in a text and missed when the week is closed.',
+      'A full project system forces the crew into someone else\'s process, and the time app wears their logo.',
+      'The office re-keys field hours into the invoice after the crew has moved to the next house.',
+    ]}
+    fixes={[
+      'Every hour is tracked against a work order and billed. The house and the hours stay together.',
+      'Payroll takes 15 minutes or less. The weekly summary is what you hand over.',
+      'Time, PTO, and work orders all come from the phone, for your own crews.',
+      'PTO is requested in hours, and the balance is what the office approves against.',
+      'Your instance is branded with your own logo and colors, and it is customized to your process.',
+      'Billing reports are ready to invoice. This is the hours and the bill, not a second estimating system.',
+    ]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <h2>Built for the people on your payroll</h2>
+      <p class="prose">
+        A general contractor's week is a stack of jobs, and the cost that slips is usually your own labor. Carpenter hours land on the wrong house. A superintendent's time never lands anywhere. PTO gets approved in a text and missed on Friday. Contractor Revolution is the place those hours go.
+      </p>
+      <p class="prose">
+        Each job, or each piece of a job you bill separately, is a work order. The crew logs time from the phone. The office sees the week by person and by order. Finished work stays on the billing list until it is billed. The weekly summary is what you hand to payroll.
+      </p>
+      <h2>Subs are not free users</h2>
+      <p class="prose">
+        Some construction tools let vendors and subs into a portal at no charge, and charge only "internal" users. Contractor Revolution does not work that way. If a person logs in, they count. If a sub does not need a login, do not add one. This product is a fit when the problem is your own crew's time, PTO, and unbilled hours. It is a poor fit when the problem is owner selections, bid leveling, or a client portal.
+      </p>
+      <h2>What setup covers</h2>
+      <p class="prose">
+        Logo and colors, roster, PINs, jobs, and locations, then a smoke test and training. Company tier and above can load a materials catalog and starting PTO balances. Enterprise adds data migration. The monthly price is the same feature set at every tier. Headcount is what changes. <a href="/compare">See the price next to Jobber and JobTread.</a>
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">See pricing</a>
+        <a class="button secondary" href="/order">Place an order</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

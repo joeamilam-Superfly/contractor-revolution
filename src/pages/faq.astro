@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import type { Faq } from '../lib/site';
+
+const title = 'FAQ | Contractor Revolution';
+const description =
+  'Answers about Contractor Revolution users, pricing, setup, PTO, and billing. Isom Electric and South Pointe Construction use it.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'FAQ', path: '/faq' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'What is Contractor Revolution?',
+    a: 'It is time tracking, work orders, PTO, and billing for trade contractors. Each shop gets its own instance, with its own logo and colors.',
+  },
+  {
+    q: 'Who uses it?',
+    a: 'Isom Electric, an electrical contractor, uses it for time tracking, work orders, PTO, and billing. South Pointe Construction uses it for time tracking, work orders, PTO, and billing.',
+  },
+  {
+    q: 'Who counts as a user?',
+    a: 'Anyone who logs in, in the field or in the office. There is not a cheaper field-only seat.',
+  },
+  {
+    q: 'What does a month cost?',
+    a: 'No-commitment monthly prices are $239 for up to 5 users, $329 for up to 10, $429 for up to 20, $529 for up to 40, and $729 for up to 75. Annual prepay is 15% off the monthly fee. Setup is separate and is not discounted.',
+  },
+  {
+    q: 'What does setup include?',
+    a: 'Logo and colors, the admin login, the crew roster, PINs, jobs, locations, a smoke test, and training. Company and above add a materials catalog import and starting PTO balances. Enterprise adds data migration and starts at $9,500.',
+  },
+  {
+    q: 'What is not included?',
+    a: 'Payment processing, marketing tools, and a CRM. Contractor Revolution does not sell those.',
+  },
+  {
+    q: 'How does PTO work?',
+    a: 'Employees request PTO from the phone. Balances are kept in hours. The office approves or denies the request. Company setup and above can load starting balances.',
+  },
+  {
+    q: 'How does billing work?',
+    a: 'Hours stay on the work order. When the work is done, the order stays on a billing list until it is billed. Payroll and billing are separate. Closing the week does not mark the job billed.',
+  },
+  {
+    q: 'How do I order?',
+    a: 'Use the order page, call 864-437-1827, or email info@isomtechnologies.com. Contractor Revolution is at 7205 US 76, Pendleton, SC 29670.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/faq" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">FAQ</p>
+    <h1>Straight answers.</h1>
+    <p class="lede">
+      Prices, users, setup, and the shops already on it. If a question is not here, call 864-437-1827.
+    </p>
+  </div>
+  <FaqList faqs={faqs} heading="Common questions" />
+</Base>

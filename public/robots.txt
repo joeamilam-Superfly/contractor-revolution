@@ -1,4 +1,26 @@
+# Contractor Revolution. Search and AI crawlers may read the public site.
+# Product summary: https://www.contractor-revolution.co/llms.txt
+# Full summary: https://www.contractor-revolution.co/llms-full.txt
+
 User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://www.contractor-revolution.co/sitemap-index.xml

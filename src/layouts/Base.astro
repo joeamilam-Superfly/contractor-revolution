@@ -1,76 +1,30 @@
 ---
-import "@fontsource/source-sans-3/400.css";
-import "@fontsource/source-sans-3/600.css";
-import "@fontsource/source-sans-3/700.css";
-import "@fontsource/barlow-condensed/600.css";
-import "@fontsource/barlow-condensed/700.css";
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_URL } from "../../shared/site.mjs";
-import { CONTACT, ADDRESS_LINE } from "../../shared/contact.mjs";
-import { TIERS } from "../../shared/pricing.mjs";
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '@fontsource/source-sans-3/latin-700.css';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ogImage, productName, siteUrl, type Crumb, type Faq } from '../lib/site';
+import { absolute, pageGraph } from '../lib/schema';
 
-const {
-  title,
-  description,
-  robots = "index,follow",
-} = Astro.props;
-
-const documentTitle = title.includes("Contractor Revolution")
-  ? title
-  : `${title} | Contractor Revolution`;
-const path = publicPath(Astro.url.pathname);
-const canonical = new URL(path, SITE_URL).href;
-
-function publicPath(pathname) {
-  let next = pathname.replace(/index\.html$/, "");
-  next = next.replace(/\.html$/, "");
-  if (next.length > 1 && next.endsWith("/")) next = next.slice(0, -1);
-  return next || "/";
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  crumbs?: Crumb[];
+  faqs?: Faq[];
+  robots?: string;
+  includeCreator?: boolean;
 }
-const image = `${SITE_URL}/og.png`;
 
-const structured = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      name: CONTACT.product,
-      url: SITE_URL,
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: CONTACT.product,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
-      url: SITE_URL,
-      description,
-      provider: {
-        "@type": "Organization",
-        name: CONTACT.vendor,
-        url: CONTACT.vendorUrl,
-        telephone: "+1-864-437-1827",
-        email: CONTACT.email,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: CONTACT.street,
-          addressLocality: CONTACT.locality,
-          addressRegion: CONTACT.region,
-          postalCode: CONTACT.postalCode,
-          addressCountry: "US",
-        },
-      },
-      offers: TIERS.map((tier) => ({
-        "@type": "Offer",
-        name: `${tier.name}, up to ${tier.included} users`,
-        price: String(tier.monthly),
-        priceCurrency: "USD",
-        url: `${SITE_URL}/pricing`,
-      })),
-    },
-  ],
-};
+const { title, description, path, crumbs = [], faqs = [], robots = 'index,follow', includeCreator = false } = Astro.props;
+const canonical = absolute(path);
+const image = `${siteUrl}${ogImage.path}`;
+const graph = pageGraph({ crumbs, faqs, includeCreator });
+const showCrumbs = crumbs.length > 1;
 ---
 
 <!doctype html>
@@ -78,31 +32,51 @@ const structured = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{documentTitle}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f3efe4" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#002458" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Contractor Revolution" />
-    <meta property="og:title" content={documentTitle} />
+    <meta property="og:site_name" content={productName} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={image} />
-    <meta property="og:image:alt" content="Contractor Revolution. Time, work orders, and billing for contractors." />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImage.alt} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
-    <script type="application/ld+json" set:html={JSON.stringify(structured)} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
   </head>
   <body>
     <a class="skip" href="#content">Skip to content</a>
     <Header />
     <main id="content">
+      {
+        showCrumbs && (
+          <nav class="wrap" aria-label="Breadcrumb">
+            <ol class="crumbs">
+              {crumbs.map((crumb, index) => (
+                <li>
+                  {index === crumbs.length - 1 ? (
+                    <span aria-current="page">{crumb.name}</span>
+                  ) : (
+                    <a href={crumb.path}>{crumb.name}</a>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
       <slot />
     </main>
     <Footer />

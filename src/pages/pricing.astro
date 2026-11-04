@@ -1,23 +1,54 @@
 ---
-import Base from "../layouts/Base.astro";
-import { TIERS, formatMoney, quote } from "../../shared/pricing.mjs";
-import { CONTACT } from "../../shared/contact.mjs";
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import { tiers } from '../lib/pricing';
+import type { Faq } from '../lib/site';
 
-const examples = [9, 10, 56, 57, 80].map((seats) => quote(seats));
-const description = "Contractor Revolution pricing. 5 users $239, 10 users $329, 20 users $429, 40 users $529, 75 users $729 a month. Annual prepay is 15% off. Setup is not discounted.";
+const title = 'Pricing | Contractor Revolution';
+const description =
+  'Contractor Revolution pricing. 5 users $239, 10 users $329, 20 users $429, 40 users $529, 75 users $729 a month. Annual prepay is 15% off. Setup is not discounted.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Pricing', path: '/pricing' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Who counts as a user?',
+    a: 'Anyone who logs in. Field and office are the same price.',
+  },
+  {
+    q: 'Do lower tiers lose features?',
+    a: 'No. Every tier includes every feature. The tier changes the included headcount, the setup, and the extra-user rate.',
+  },
+  {
+    q: 'What does annual prepay change?',
+    a: 'It takes 15% off the monthly fee, rounded to the nearest dollar, and that amount is paid up front for the year. Extra users get the same 15% off, rounded per user. Setup stays the same.',
+  },
+  {
+    q: 'Is monthly a contract?',
+    a: 'The monthly column is the no-commitment price. Annual prepay is paid for the year up front.',
+  },
+  {
+    q: 'What is not in the price?',
+    a: 'Payment processing, marketing tools, and a CRM. Contractor Revolution does not sell those.',
+  },
+  {
+    q: 'How do I order?',
+    a: 'Use the order page at contractor-revolution.co/order, call 864-437-1827, or email info@isomtechnologies.com.',
+  },
+];
 ---
 
-<Base title="Pricing" description={description}>
+<Base title={title} description={description} path="/pricing" crumbs={crumbs} faqs={faqs}>
   <div class="wrap page-hero">
     <p class="kicker">Rate card</p>
     <h1>One product. Priced by headcount.</h1>
     <p class="lede">
-      Every tier includes every feature. A user is anyone who logs in, in the field or in the office.
-      Monthly is the no-commitment price. Annual prepay takes 15% off the monthly fee, rounded to the nearest dollar.
-      Setup is not discounted.
+      Every tier includes every feature. A user is anyone who logs in, in the field or in the office. Monthly is the no-commitment price. Annual prepay takes 15% off the monthly fee, rounded to the nearest dollar. Setup is not discounted.
     </p>
   </div>
-
   <section class="section">
     <div class="wrap">
       <div class="table-scroll">
@@ -35,43 +66,39 @@ const description = "Contractor Revolution pricing. 5 users $239, 10 users $329,
             </tr>
           </thead>
           <tbody>
-            {TIERS.map((tier) => (
-              <tr>
-                <th scope="row"><a href={`/order?seats=${tier.included}`}>{tier.name}</a></th>
-                <td>Up to {tier.included}</td>
-                <td class="num">{formatMoney(tier.monthly)}</td>
-                <td class="num">{formatMoney(tier.annualMonthly)}</td>
-                <td class="num">{formatMoney(tier.annualYear)}</td>
-                <td class="num">{tier.setupFrom ? `From ${formatMoney(tier.setup)}` : formatMoney(tier.setup)}</td>
-                <td class="num">{formatMoney(tier.extra)} / mo</td>
-              </tr>
-            ))}
+            {
+              tiers.map((tier) => (
+                <tr>
+                  <th scope="row"><a href={`/order?seats=${tier.included}`}>{tier.name}</a></th>
+                  <td>Up to {tier.included}</td>
+                  <td class="num">${tier.monthly}</td>
+                  <td class="num">${tier.annualMonthly}</td>
+                  <td class="num">${tier.annualYear.toLocaleString('en-US')}</td>
+                  <td class="num">{tier.setupFrom ? `From $${tier.setup.toLocaleString('en-US')}` : `$${tier.setup.toLocaleString('en-US')}`}</td>
+                  <td class="num">${tier.extra} / mo</td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>
-      <p class="fine">
-        Extra users on annual prepay are also 15% off, rounded per user:
-        {" "}
-        {TIERS.map((tier) => `${tier.name} ${formatMoney(tier.extraAnnual)}`).join(", ")}.
-        On a small screen, swipe the table sideways.
-      </p>
+      <p class="fine">Extra users on annual prepay are also 15% off, rounded per user: Starter $16, Crew $16, Company $13, Pro $10, Enterprise $7. On a small screen, swipe the table sideways.</p>
     </div>
   </section>
-
   <section class="section">
     <div class="wrap">
       <h2>How extra users work</h2>
-      <p class="prose">
-        Seats past the included count are extra users at that tier's rate. Extra users reach the next tier's
-        price before its user count, so the order moves up instead of stacking seats. The lower number is the one on the order.
-      </p>
+      <p class="prose">Seats past the included count are extra users at that tier's rate. Extra users reach the next tier's price before its user count, so the order moves up instead of stacking seats. The lower number is the one on the order.</p>
       <ul>
-        {examples.map((item) => <li>{item.note}</li>)}
+        <li>9 users stay on Starter. Starter plus 4 extra users is $315, which is less than Crew at $329.</li>
+        <li>10 users move up to Crew. Starter plus 5 extra users would be $334, and Crew is $329.</li>
+        <li>56 users stay on Pro. Pro plus 16 extra users is $721, which is less than Enterprise at $729.</li>
+        <li>57 users move up to Enterprise. Pro plus 17 extra users would be $733, and Enterprise is $729.</li>
+        <li>80 users is Enterprise: 75 included and 5 extra at $8 each.</li>
       </ul>
       <p><a class="button" href="/order">Price a seat count</a></p>
     </div>
   </section>
-
   <section class="section">
     <div class="wrap">
       <h2>What setup pays for</h2>
@@ -86,38 +113,5 @@ const description = "Contractor Revolution pricing. 5 users $239, 10 users $329,
       <p>The system is customized to your exact processes. That work is the setup fee, and it is not waived on annual prepay.</p>
     </div>
   </section>
-
-  <section class="section faq">
-    <div class="wrap">
-      <h2>Questions</h2>
-      <details>
-        <summary>Who counts as a user?</summary>
-        <p>Anyone who logs in. Field and office are the same price.</p>
-      </details>
-      <details>
-        <summary>Do lower tiers lose features?</summary>
-        <p>No. Every tier includes every feature. The tier changes the included headcount, the setup, and the extra-user rate.</p>
-      </details>
-      <details>
-        <summary>What does annual prepay change?</summary>
-        <p>It takes 15% off the monthly fee, rounded to the nearest dollar, and that amount is paid up front for the year. Extra users get the same 15% off, rounded per user. Setup stays the same.</p>
-      </details>
-      <details>
-        <summary>Is monthly a contract?</summary>
-        <p>The monthly column is the no-commitment price. Annual prepay is paid for the year up front.</p>
-      </details>
-      <details>
-        <summary>What is not in the price?</summary>
-        <p>Payment processing, marketing tools, and a CRM. Contractor Revolution does not sell those.</p>
-      </details>
-      <details>
-        <summary>How do I order?</summary>
-        <p>
-          Use the <a href="/order">order page</a>, call
-          <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a>, or email
-          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
-        </p>
-      </details>
-    </div>
-  </section>
+  <FaqList faqs={faqs} />
 </Base>

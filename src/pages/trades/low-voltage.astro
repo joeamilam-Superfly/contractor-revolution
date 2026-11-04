@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'Low-voltage and fiber time tracking | Contractor Revolution';
+const description =
+  'Time tracking, work orders, PTO, and billing for low-voltage and fiber crews. Hours stay on the pull until the job is billed.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+  { name: 'Low voltage and fiber', path: '/trades/low-voltage' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Can more than one tech log time on the same pull?',
+    a: 'Yes. A work order holds the site, the assigned lead, the rest of the crew, and the hours each person logs.',
+  },
+  {
+    q: 'What if the job pauses for another trade?',
+    a: 'The hours stay on the work order. Finished work moves to the billing list. Open work stays open. Payroll does not clear either list.',
+  },
+  {
+    q: 'Does the phone show the scheduled work?',
+    a: 'Yes. The scheduled work order, the site, and the hours logged against it are on the phone.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades/low-voltage" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Low voltage and fiber</p>
+    <h1>Hours on the pull, not in a group text.</h1>
+    <p class="lede">
+      A pull with three people and one group text is how hours go missing. Each person logs time to the same work order, from the phone.
+    </p>
+  </div>
+  <ProblemSolution
+    pains={[
+      'The lead, the pullers, and the person terminating all text their hours, and the bill comes up short.',
+      'Payroll is a pile of messages because the crew never wrote the day down in one place.',
+      'Nobody can say whether the labels and the test are done, because the status is in a thread.',
+      'PTO gets approved in a text and missed on the weekly total.',
+      'The time app on the phone is branded for a different trade.',
+      'The office retypes the pull into an invoice after the crew has already left the site.',
+    ]}
+    fixes={[
+      'Every hour is tracked against that work order and billed. Several people can log time on the same order.',
+      'Payroll takes 15 minutes or less, from the weekly summary.',
+      'Time, PTO, and work orders all come from the phone, including the site and who is on the crew.',
+      'PTO requests and hour balances are in the same place the office closes the week.',
+      'The instance carries your logo and your colors, set up around how you already run a pull.',
+      'Billing reports are ready to invoice when the work is actually done.',
+    ]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <h2>One work order, several people</h2>
+      <p class="prose">
+        A data drop or a fiber backbone is rarely one person. The lead, the pullers, and the person terminating all need their hours on the same order, or the bill is short and payroll is a pile of texts. The work order shows the site, who is assigned, who else is on the crew, and the hours already logged.
+      </p>
+      <p class="prose">
+        Techs enter time from the phone against that order. A note can say what got done, such as a material count or which end still needs labels. The office does not retype the day.
+      </p>
+      <h2>Billing waits until the work is actually done</h2>
+      <p class="prose">
+        Low-voltage jobs often pause for the other trades. The hours should not disappear during the pause, and they should not get billed before the labels and the test are finished. Finished work stays on the billing list until it is billed. Open work stays on the work order.
+      </p>
+      <h2>Payroll is a separate close</h2>
+      <p class="prose">
+        The weekly summary is regular hours, overtime, leave, and total paid hours. That file is for payroll. It does not clear the billing list. PTO is requested from the phone and approved in hours.
+      </p>
+      <p class="prose">
+        This is not a test-equipment log, a labeling printer, or a CRM. It is the time, the work order, the PTO, and the bill. Your instance uses your logo and your colors.
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">See pricing</a>
+        <a class="button secondary" href="/pricing">See pricing</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

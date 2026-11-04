@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import ProblemSolution from '../../components/ProblemSolution.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'Plumbing time tracking and billing | Contractor Revolution';
+const description =
+  'Plumbing work orders with hours attached, PTO from the phone, and a weekly summary for payroll. Unbilled jobs stay on the list.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+  { name: 'Plumbing', path: '/trades/plumbing' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'What if one plumber runs four calls in a day?',
+    a: 'Give each call its own work order. The plumber logs the hours to the address they were at. The office does not split a single 8-hour line by memory.',
+  },
+  {
+    q: 'Does the weekly summary show overtime?',
+    a: 'Yes. The weekly summary lists regular hours, overtime, leave, and total paid hours. You still apply your own overtime rule when you enter or approve the time. The page does not set that rule for you.',
+  },
+  {
+    q: 'Can I take a deposit in the app?',
+    a: 'No. Contractor Revolution does not process payments. It keeps the hours on the work order until the job is billed.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades/plumbing" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Plumbing</p>
+    <h1>Four calls in a day need four work orders.</h1>
+    <p class="lede">
+      A plumbing day falls apart in the office when every hour is "on the van." Contractor Revolution asks for the work order, so the address and the hours stay together.
+    </p>
+  </div>
+  <ProblemSolution
+    pains={[
+      'Four calls in a day get written as "8 hours, van," and the small jobs never get billed.',
+      'Payroll takes the afternoon because the plumber\'s timesheet is a notebook in the truck.',
+      'The office does not know which address is done and which one is still open.',
+      'A half day of PTO gets lost, then turns into an argument on Friday.',
+      'The app the crew is told to use was built for a different company\'s brand.',
+      'Someone in the office retypes every call into the billing file.',
+    ]}
+    fixes={[
+      'Every hour is tracked against a work order and billed. Each call gets its own order.',
+      'Payroll takes 15 minutes or less, from the weekly summary of regular, overtime, and leave.',
+      'Time, PTO, and work orders all come from the phone, with the address on the order.',
+      'PTO is requested in hours and approved before the week is sent to payroll.',
+      'Your instance carries your logo and your colors, set up around the way you already run calls.',
+      'Billing reports are ready to invoice. Paying the crew does not clear the billing list.',
+    ]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <h2>Service work and longer jobs</h2>
+      <p class="prose">
+        A clog at 8 and a water heater at 10 should not share a timesheet line. Each one is a work order with the site on it. The plumber logs the segment from the phone. If a remodel runs all week, that crew logs to the remodel's work order, not to the service calls.
+      </p>
+      <p class="prose">
+        The office list shows who is on which order and how many hours are already there. Unassigned work is visible. Work that is finished and not billed is a different status, so it does not hide behind tomorrow's calls.
+      </p>
+      <h2>Payroll Friday</h2>
+      <p class="prose">
+        Before the file goes to payroll, the week should show every person who worked, or a recorded day off. Overtime and leave are on the weekly summary with the regular hours. PTO is requested in hours from the phone, and the balance is what the office approves against.
+      </p>
+      <p class="prose">
+        Use the <a href="/tools/timesheet-payroll-checklist">timesheet-to-payroll checklist</a> if you want the close written down. It is free and it does not require an account.
+      </p>
+      <h2>Plain limits</h2>
+      <p class="prose">
+        There is no drain-camera module, no flat-rate book, and no card reader. A user is anyone who logs in. Price is the published tier for that headcount, plus setup. <a href="/pricing">The rate card is public.</a>
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">See pricing</a>
+        <a class="button secondary" href="/order">Place an order</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

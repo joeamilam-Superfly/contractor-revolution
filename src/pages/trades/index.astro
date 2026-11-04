@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Trades | Contractor Revolution';
+const description =
+  'Time tracking, work orders, PTO, and billing pages for electrical, low-voltage and fiber, HVAC, plumbing, and general contractors.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+];
+
+const trades = [
+  {
+    href: '/trades/electrical',
+    name: 'Electrical',
+    text: 'Service calls and project work orders, with hours that stay on the job until they are billed. Isom Electric uses it.',
+  },
+  {
+    href: '/trades/low-voltage',
+    name: 'Low voltage and fiber',
+    text: 'Crews on the same pull, hours on the work order, and a weekly summary for payroll.',
+  },
+  {
+    href: '/trades/hvac',
+    name: 'HVAC',
+    text: 'Maintenance visits and changeouts as separate work orders, so the hours do not get mixed.',
+  },
+  {
+    href: '/trades/plumbing',
+    name: 'Plumbing',
+    text: 'Each call gets a work order. The office can see who was on which address before payroll.',
+  },
+  {
+    href: '/trades/general-contractors',
+    name: 'General contractors',
+    text: 'Hours, PTO, and billing for your own crews. South Pointe Construction uses it.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades" crumbs={crumbs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Trades</p>
+    <h1>The same product, written for the work.</h1>
+    <p class="lede">
+      Contractor Revolution is not a different app per trade. The work order, the hours, the PTO, and the billing list are the same. These pages say how that fits each shop.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <div class="card-grid">
+        {
+          trades.map((trade) => (
+            <a href={trade.href}>
+              <h2>{trade.name}</h2>
+              <p>{trade.text}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

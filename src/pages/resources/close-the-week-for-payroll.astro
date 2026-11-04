@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Close the week for payroll | Contractor Revolution';
+const description =
+  'A Friday process for contractor payroll: missing timesheets, overtime, PTO, and a weekly total you can send without retyping the crew.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Close the week', path: '/resources/close-the-week-for-payroll' },
+];
+---
+
+<Base title={title} description={description} path="/resources/close-the-week-for-payroll" crumbs={crumbs}>
+  <article class="wrap page-hero article">
+    <p class="kicker">Article</p>
+    <h1>Close the week for payroll.</h1>
+    <p class="lede">
+      Payroll gets slow when Friday is the first time anyone looks at the hours. This is an office routine. It is not legal advice, and it does not pick your overtime rule.
+    </p>
+  </article>
+  <section class="section">
+    <div class="wrap article">
+      <h2>Use the payroll week, not the calendar you prefer</h2>
+      <p>
+        Ask whoever runs payroll which days are in a week. If they pay Monday through Sunday and you close Sunday through Saturday, one day falls out every time. Write the dates at the top of the packet before you look at a single name.
+      </p>
+      <h2>A blank person is not zero hours</h2>
+      <p>
+        Walk the roster. Each person either has time or has a recorded day off. A new hire who started Wednesday still needs Wednesday through the end of the week. A person on vacation needs the leave, not an empty row that payroll will read as "did not work and do not pay."
+      </p>
+      <p>
+        PTO should already be approved or denied. Pending is not a status you send. Approved hours go in the paid total. Denied hours do not. The balance is in hours, so an 8-hour day and a 4-hour afternoon are both obvious.
+      </p>
+      <h2>Every hour names a place</h2>
+      <p>
+        Job hours belong on a work order. Shop time, meetings, and paid drive time that is not on a customer job belong on an overhead code you already use. "Hours" with no name is how a job gets billed short and how a truck day gets billed to the wrong customer.
+      </p>
+      <p>
+        If the hours do not match what was scheduled, the note should already be there: rained out, second tech sent over, material run. The office should not have to reconstruct Tuesday from memory.
+      </p>
+      <h2>Flag overtime with the rule you already have</h2>
+      <p>
+        Some shops pay overtime after 8 hours in a day. Some pay after 40 in the week. Prevailing wage jobs follow the wage determination. Write the rule down where the person closing payroll can see it, and apply that rule. Do not negotiate a new rule while you are trying to send the file.
+      </p>
+      <p>
+        A week that is far above a person's normal hours needs a reason before it goes out. Sometimes the reason is a real push. Sometimes the reason is a duplicate entry from a phone that saved twice. Look before you pay it twice.
+      </p>
+      <h2>The total has to match the rows</h2>
+      <p>
+        Add regular, overtime, and leave by person. Then add the people. If the footer does not match, the footer is wrong or a row is wrong. Do not send a file you cannot add back to the same number.
+      </p>
+      <p>
+        Send one copy to payroll and keep one with the week dates on it. After it is sent, leave it alone unless payroll kicks it back. Quiet edits after the send are how the next week starts with an argument.
+      </p>
+      <h2>What this has to do with the software</h2>
+      <p>
+        Contractor Revolution's weekly summary is that packet: regular hours, overtime, leave, and total paid hours, by person. The product is built so the close takes 15 minutes or less, because the hours were entered on the job during the week. The <a href="/tools/timesheet-payroll-checklist">checklist</a> is the same routine on paper, if you are not on the software yet.
+      </p>
+      <p>
+        Paying the week does not bill the customer. Leave finished work orders on the billing list. That split is the next article, <a href="/resources/work-order-hours-that-get-billed">work order hours that get billed</a>.
+      </p>
+    </div>
+  </section>
+</Base>

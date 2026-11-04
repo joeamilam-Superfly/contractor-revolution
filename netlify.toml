@@ -54,6 +54,86 @@
   status = 301
 
 [[redirects]]
+  from = "/faq.html"
+  to = "/faq"
+  status = 301
+
+[[redirects]]
+  from = "/jobber-alternative.html"
+  to = "/jobber-alternative"
+  status = 301
+
+[[redirects]]
+  from = "/jobtread-alternative.html"
+  to = "/jobtread-alternative"
+  status = 301
+
+[[redirects]]
+  from = "/trades.html"
+  to = "/trades"
+  status = 301
+
+[[redirects]]
+  from = "/trades/electrical.html"
+  to = "/trades/electrical"
+  status = 301
+
+[[redirects]]
+  from = "/trades/low-voltage.html"
+  to = "/trades/low-voltage"
+  status = 301
+
+[[redirects]]
+  from = "/trades/hvac.html"
+  to = "/trades/hvac"
+  status = 301
+
+[[redirects]]
+  from = "/trades/plumbing.html"
+  to = "/trades/plumbing"
+  status = 301
+
+[[redirects]]
+  from = "/trades/general-contractors.html"
+  to = "/trades/general-contractors"
+  status = 301
+
+[[redirects]]
+  from = "/tools.html"
+  to = "/tools"
+  status = 301
+
+[[redirects]]
+  from = "/tools/labor-burden.html"
+  to = "/tools/labor-burden"
+  status = 301
+
+[[redirects]]
+  from = "/tools/timesheet-payroll-checklist.html"
+  to = "/tools/timesheet-payroll-checklist"
+  status = 301
+
+[[redirects]]
+  from = "/resources.html"
+  to = "/resources"
+  status = 301
+
+[[redirects]]
+  from = "/resources/fully-loaded-labor-rate.html"
+  to = "/resources/fully-loaded-labor-rate"
+  status = 301
+
+[[redirects]]
+  from = "/resources/close-the-week-for-payroll.html"
+  to = "/resources/close-the-week-for-payroll"
+  status = 301
+
+[[redirects]]
+  from = "/resources/work-order-hours-that-get-billed.html"
+  to = "/resources/work-order-hours-that-get-billed"
+  status = 301
+
+[[redirects]]
   from = "/api/checkout"
   to = "/.netlify/functions/create-checkout"
   status = 200

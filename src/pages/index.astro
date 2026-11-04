@@ -1,23 +1,19 @@
 ---
-import Base from "../layouts/Base.astro";
-import Shots from "../components/Shots.astro";
-import { PROMISES } from "../../shared/copy.mjs";
-import { CONTACT } from "../../shared/contact.mjs";
-import { TIERS, formatMoney, quote } from "../../shared/pricing.mjs";
+import Base from '../layouts/Base.astro';
+import { customers } from '../lib/site';
 
-const crew = quote(10);
-const description = "Time tracking, work orders, and billing for contractors. Your own logo and colors, set up around your process. A product of Isom Technologies.";
+const title = 'Contractor Revolution | Time, work orders, and billing';
+const description =
+  'Time tracking, work orders, PTO, and billing for contractors. Your own logo and colors, set up around your process.';
 ---
 
-<Base title="Contractor Revolution | Time, work orders, and billing" description={description}>
+<Base title={title} description={description} path="/">
   <div class="wrap hero">
     <div>
-      <p class="kicker">A product of {CONTACT.vendor}</p>
+      <p class="kicker">Time app. Your brand. Your control.</p>
       <h1>Time, work orders, and billing for contractors.</h1>
       <p class="lede">
-        Contractor Revolution keeps the hours, the work orders, and the billing in one place.
-        Your shop gets its own instance. It carries your logo and your colors, and we set it up
-        around the way you already run work.
+        Contractor Revolution keeps the hours, the work orders, and the billing in one place. Your shop gets its own instance. It carries your logo and your colors, and we set it up around the way you already run work.
       </p>
       <div class="actions">
         <a class="button" href="/pricing">See pricing</a>
@@ -25,28 +21,40 @@ const description = "Time tracking, work orders, and billing for contractors. Yo
       </div>
     </div>
     <aside class="rate-card" aria-label="Crew price for 10 users">
-      <p class="tier">{crew.tierName} · {crew.seats} users</p>
-      <p class="price">{formatMoney(crew.monthlyFee)}</p>
+      <p class="tier">Crew · 10 users</p>
+      <p class="price">$329</p>
       <p>per month, no commitment</p>
-      <p>{formatMoney(crew.annualPerMonth)} a month if you pay the year up front</p>
-      <p>Setup {formatMoney(crew.setup)}, one time</p>
+      <p>$280 a month if you pay the year up front</p>
+      <p>Setup $2,500, one time</p>
       <p><a href="/pricing">All five tiers</a></p>
     </aside>
   </div>
 
-  <section class="section" id="short">
+  <section class="section" id="problem">
     <div class="wrap">
-      <h2>The short version</h2>
-      <ol class="promises">
-        {PROMISES.map((line) => <li>{line}</li>)}
+      <h2>The problem</h2>
+      <ol class="pain-list">
+        <li>Hours worked never get billed because paper timesheets and texts get lost.</li>
+        <li>Payroll takes hours every week chasing crews for their time.</li>
+        <li>Work orders live in texts, whiteboards, and email, so nobody knows the status.</li>
+        <li>PTO requests get lost, and arguments follow.</li>
+        <li>Off-the-shelf apps force your crew into someone else's process and brand.</li>
+        <li>Office staff re-key field data into billing.</li>
       </ol>
     </div>
   </section>
 
-  <section class="section" id="screens">
+  <section class="section" id="short">
     <div class="wrap">
-      <h2>What the work looks like</h2>
-      <Shots />
+      <h2>The solution</h2>
+      <ol class="fix-list">
+        <li>Every hour is tracked against a work order and billed. We track every hour, and when the work is done we make sure it's billed.</li>
+        <li>Payroll takes 15 minutes or less. The week is already on the summary, so nobody spends Friday chasing the crew.</li>
+        <li>Time, PTO, and work orders all come from the phone. Employees track their time, PTO requests and scheduled work orders from their phone.</li>
+        <li>Your instance is branded with your own logo and colors.</li>
+        <li>The system is customized to your exact processes.</li>
+        <li>Billing reports are ready to invoice. The office does not retype the day.</li>
+      </ol>
     </div>
   </section>
 
@@ -82,18 +90,168 @@ const description = "Time tracking, work orders, and billing for contractors. Yo
     </div>
   </section>
 
+  <section class="section" id="screens">
+    <div class="wrap">
+      <h2>What the work looks like</h2>
+      <p class="fine">The names and jobs in these screens are sample data, so you can see the layout. They are not customer records.</p>
+      <section class="shot-pair" aria-labelledby="shot-team">
+        <h3 id="shot-team">Team</h3>
+        <p>The week’s crew, with hours logged and the work order each person is on.</p>
+        <div class="pair single">
+          <figure>
+            <img
+              src="/images/app/dashboard-desktop.webp"
+              width="1440"
+              height="900"
+              alt="Team list for November 1 to 7. Avery Quinn, foreman, 16 hours on work order 2041, North Warehouse data drops. Morgan Hale, admin, 12 hours on the same order. Parker Solis, 16 hours on work order 2112, Cedar School library circuits. Reese Calder, 16 hours on work order 1988, Riverside Clinic lighting. Rowan Ellis and Skyler Brooks, 16 hours each, on work order 2041."
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <figcaption>Desktop</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-time">
+        <h3 id="shot-time">Time entry</h3>
+        <p>Scheduled work and today’s hours, logged from the phone against a work order.</p>
+        <div class="pair single phone-only">
+          <figure class="phone">
+            <img
+              src="/images/app/time-phone.webp"
+              width="390"
+              height="844"
+              alt="Phone time entry for Tuesday, November 3. North Warehouse is scheduled. A draft segment from 8:00 to 14:00 is 6 hours on work order 2041, North Warehouse data drops, with foreman Avery Quinn. The note says office check and material count."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Phone</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-work-order-list">
+        <h3 id="shot-work-order-list">Work orders</h3>
+        <p>Open work orders, split into ones that need a crew and ones that are ready to bill.</p>
+        <div class="pair">
+          <figure>
+            <img
+              src="/images/app/work-order-list-desktop.webp"
+              width="1440"
+              height="900"
+              alt="Work order list. WO 2200 at Riverside Clinic is unassigned. WO 2010, Cedar School Gym, and WO 1988, Riverside Clinic, are ready to bill. WO 2112, Cedar School library circuits, is assigned to Parker Solis. WO 2041, North Warehouse data drops, is assigned to Rowan Ellis and a crew."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Desktop</figcaption>
+          </figure>
+          <figure class="phone">
+            <img
+              src="/images/app/work-order-list-phone.webp"
+              width="390"
+              height="844"
+              alt="Phone work order list. WO 2200 at Riverside Clinic is unassigned. WO 2010, Cedar School Gym, is ready to bill and assigned to Parker Solis."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Phone</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-work-order">
+        <h3 id="shot-work-order">Work order</h3>
+        <p>Location, schedule, crew, and the hours already logged on the order.</p>
+        <div class="pair single phone-only">
+          <figure class="phone">
+            <img
+              src="/images/app/work-order-phone.webp"
+              width="390"
+              height="844"
+              alt="Work order 2041 at North Warehouse, received October 27 and scheduled November 3. Assigned to Rowan Ellis, with Avery Quinn on the crew. The job is to pull 24 Cat6 runs from the MDF to the new office wing and label both ends. Time logged is 132 hours, including entries from Avery Quinn, Rowan Ellis, and Morgan Hale."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Phone</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-pto">
+        <h3 id="shot-pto">PTO</h3>
+        <p>Leave requests from the phone, and the hour balance the office approves.</p>
+        <div class="pair single">
+          <figure>
+            <img
+              src="/images/app/pto-desktop.webp"
+              width="1440"
+              height="900"
+              alt="Leave screen. The 2026 allotment is 80 hours, with 0 used and 80 remaining. Reese Calder has a pending request for November 26 and 27, 8 hours a day, reason out of town for a family visit. Morgan Hale has a request for November 27."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Desktop</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-billing">
+        <h3 id="shot-billing">Billing</h3>
+        <p>When the work is done, the hours stay on the billing report until they are billed.</p>
+        <div class="pair single">
+          <figure>
+            <img
+              src="/images/app/billing-desktop.webp"
+              width="1440"
+              height="900"
+              alt="Billing report for October 1 to October 31, 2026. Total labor is 208 hours and total billed is $17,680. Cedar School Gym, work order 2010, is 48 hours and $4,080. Maple Retail fit-out, work order 1902, is 32 hours and $2,720."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Desktop</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="shot-pair" aria-labelledby="shot-weekly">
+        <h3 id="shot-weekly">Weekly summary</h3>
+        <p>The week’s hours in one place, ready to export for payroll.</p>
+        <div class="pair single">
+          <figure>
+            <img
+              src="/images/app/weekly-desktop.webp"
+              width="1440"
+              height="900"
+              alt="Weekly summary for October 25 to 31. The team has 204 regular hours, 4 overtime hours, 8 leave hours, and 216 total paid hours. Six employees are active. Avery Quinn has 40 hours, Rowan Ellis 44 hours, and Parker Solis 40 hours."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Desktop</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section" id="customers">
+    <div class="wrap">
+      <h2>Who uses it</h2>
+      <p class="prose">These shops use Contractor Revolution.</p>
+      <ul class="customer-list">
+        {
+          customers.map((customer) => (
+            <li>
+              <strong>{customer.name}</strong>
+              <p>{customer.line}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <h2>Setup</h2>
       <p class="prose">
-        Setup is a one-time go-live, not a software download. It covers your logo and colors, the admin login,
-        the crew roster, PINs, jobs, and locations, then a smoke test and training. Company and above add a
-        materials catalog import and starting PTO balances. Enterprise adds data migration. Every tier includes
-        every feature. A user is anyone who logs in, in the field or in the office.
+        Setup is a one-time go-live, not a software download. It covers your logo and colors, the admin login, the crew roster, PINs, jobs, and locations, then a smoke test and training. Company and above add a materials catalog import and starting PTO balances. Enterprise adds data migration. Every tier includes every feature. A user is anyone who logs in, in the field or in the office.
       </p>
-      <p class="prose">
-        The price does not include payment processing, marketing tools, or a CRM. We do not sell those.
-      </p>
+      <p class="prose">The price does not include payment processing, marketing tools, or a CRM. We do not sell those.</p>
     </div>
   </section>
 
@@ -102,16 +260,11 @@ const description = "Time tracking, work orders, and billing for contractors. Yo
       <h2>Monthly price by shop size</h2>
       <p>These are the no-commitment monthly prices at each tier's included headcount. Annual prepay takes 15% off. Setup is separate and is not discounted.</p>
       <ul class="price-strip">
-        {TIERS.map((tier) => (
-          <li>
-            <a href={`/order?seats=${tier.included}`}>
-              <span>{tier.name}</span>
-              <strong>{formatMoney(tier.monthly)}</strong>
-              <span>Up to {tier.included} users</span>
-              <span>Setup {tier.setupFrom ? `from ${formatMoney(tier.setup)}` : formatMoney(tier.setup)}</span>
-            </a>
-          </li>
-        ))}
+        <li><a href="/order?seats=5"><span>Starter</span><strong>$239</strong><span>Up to 5 users</span><span>Setup $1,500</span></a></li>
+        <li><a href="/order?seats=10"><span>Crew</span><strong>$329</strong><span>Up to 10 users</span><span>Setup $2,500</span></a></li>
+        <li><a href="/order?seats=20"><span>Company</span><strong>$429</strong><span>Up to 20 users</span><span>Setup $4,000</span></a></li>
+        <li><a href="/order?seats=40"><span>Pro</span><strong>$529</strong><span>Up to 40 users</span><span>Setup $6,000</span></a></li>
+        <li><a href="/order?seats=75"><span>Enterprise</span><strong>$729</strong><span>Up to 75 users</span><span>Setup from $9,500</span></a></li>
       </ul>
       <p><a href="/pricing">Full rate card, extra users, and annual prepay</a></p>
     </div>
@@ -120,13 +273,9 @@ const description = "Time tracking, work orders, and billing for contractors. Yo
   <section class="section">
     <div class="wrap callout">
       <div>
-        <h2>Call {CONTACT.vendor}</h2>
-        <p>
-          <a href={`tel:${CONTACT.phoneTel}`}>{CONTACT.phoneDisplay}</a>
-          {" · "}
-          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-        </p>
-        <p>{CONTACT.street}, {CONTACT.locality}, {CONTACT.region} {CONTACT.postalCode}</p>
+        <h2>Call Contractor Revolution</h2>
+        <p><a href="tel:+18644371827">864-437-1827</a> · <a href="mailto:info@isomtechnologies.com">info@isomtechnologies.com</a></p>
+        <p>7205 US 76, Pendleton, SC 29670</p>
       </div>
       <a class="button" href="/order">Place an order</a>
     </div>

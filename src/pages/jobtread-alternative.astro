@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import type { Faq } from '../lib/site';
+
+const title = 'JobTread alternative for crew hours | Contractor Revolution';
+const description =
+  'A JobTread alternative for crew time, PTO, work orders, and billing. JobTread public rates as of November 2026, next to Contractor Revolution.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compare', path: '/compare' },
+  { name: 'JobTread alternative', path: '/jobtread-alternative' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Is Contractor Revolution a JobTread replacement?',
+    a: 'No. JobTread publishes estimating, scheduling, daily logs, client and vendor portals, and job financials in one subscription. Contractor Revolution is time tracking, PTO, work orders, and a billing list for the people who log in.',
+  },
+  {
+    q: 'How was the JobTread column calculated?',
+    a: 'From jobtread.com/pricing as checked November 3, 2026. Base is $199 a month and includes 1 internal user. Users 2 to 10 are $20, users 11 to 20 are $15, users 21 to 30 are $10, and users 31 and up are $5. Price breaks apply only inside each band. Pricing as of November 2026.',
+  },
+  {
+    q: 'Are field crews free on Contractor Revolution?',
+    a: 'No. JobTread says some field crew can be free users if they only upload photos, log notes, view a schedule, or check tasks. On Contractor Revolution, a person who logs in is a user at the same rate as the office.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/jobtread-alternative" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Pricing as of November 2026</p>
+    <h1>A JobTread alternative for the hours, not the estimate.</h1>
+    <p class="lede">
+      JobTread is construction software with estimating, schedules, and portals, priced by internal user. Contractor Revolution is time, PTO, work orders, and billing. If you need both, these are not substitutes. If you need the hours, read the table and then check JobTread's page.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>Monthly price at the same headcount</h2>
+      <p class="prose">
+        JobTread's monthly math, from the public rate card checked November 3, 2026: $199 includes the first internal user. Five users is $199 plus four users at $20, which is $279. Ten users is $199 plus nine at $20, which is $379. Twenty users adds the ten users in the $15 band (users 11 to 20), which is $529. Forty users adds ten users at $10 and ten at $5, which is $679. Seventy-five users is that $679 plus users 41 to 75 (35 users) at $5, which is $854.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <caption>No-commitment monthly price. Pricing as of November 2026. JobTread totals use the published bands. They are not a quote from JobTread.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Users who log in</th>
+              <th scope="col" class="num us">Contractor Revolution</th>
+              <th scope="col" class="num">JobTread monthly</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">5</th><td class="num us">$239</td><td class="num">$279</td></tr>
+            <tr><th scope="row">10</th><td class="num us">$329</td><td class="num">$379</td></tr>
+            <tr><th scope="row">20</th><td class="num us">$429</td><td class="num">$529</td></tr>
+            <tr><th scope="row">40</th><td class="num us">$529</td><td class="num">$679</td></tr>
+            <tr><th scope="row">75</th><td class="num us">$729</td><td class="num">$854</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">
+        Source: <a href="https://www.jobtread.com/pricing">jobtread.com/pricing</a>, checked November 3, 2026. Annual billing on JobTread is listed as 20% off the base, with lower add-on rates ($16, $12, $8, and $4). Confirm before you buy. Our annual prepay is 15% off and is on the <a href="/pricing">rate card</a>.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>The user definition changes the math</h2>
+      <p class="prose">
+        JobTread's page says internal users are people who need customer and vendor data, jobs, schedules, time, and reports. Customers, vendors, and subcontractors on the external portal are free and unlimited. JobTread also says some field crew can be free if they only upload pictures, log daily notes, view a schedule, or check off tasks.
+      </p>
+      <p class="prose">
+        Contractor Revolution has one kind of user: a person who logs in. A lead, a helper, and the office person are the same price. There is no free portal. If you counted only JobTread internal users and then added every person who would log into Contractor Revolution, you would be comparing different headcounts. Do the count twice, once for each rule, before you trust the table.
+      </p>
+      <h2>What the products are for</h2>
+      <p class="prose">
+        JobTread's public pricing page says the subscription includes every feature: unlimited jobs and files, portals, data imports, templates, and implementation. There is no free trial. Monthly plans have a 30-day money-back guarantee. There is no setup fee.
+      </p>
+      <p class="prose">
+        Contractor Revolution does not include estimating, takeoff, client portals, or vendor portals. It does include phone time entry, PTO in hours, work orders with crew and site, a billing list, a weekly payroll summary, and an instance with your logo and colors. Setup is a one-time fee and is not waived. We do not sell payment processing, marketing tools, or a CRM.
+      </p>
+      <h2>A straight way to choose</h2>
+      <p class="prose">
+        Choose JobTread if you want one system for the estimate, the schedule, the subs, and the client, and you are willing to learn their user rules. Choose Contractor Revolution if your own crew's hours, PTO, and unbilled work are the problem, and you want that in your colors.
+      </p>
+      <p class="prose">
+        South Pointe Construction and Isom Electric use Contractor Revolution for time tracking, work orders, PTO, and billing.
+      </p>
+      <div class="actions">
+        <a class="button" href="/compare">Full comparison table</a>
+        <a class="button secondary" href="/order">Price a seat count</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

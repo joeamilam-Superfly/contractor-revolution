@@ -106,14 +106,14 @@ if (form) {
       if (!button || !payNote) return;
       if (data.stripe) {
         button.textContent = "Continue to payment";
-        payNote.textContent = "The next step is Stripe. You pay the setup fee and the first period there. Isom Technologies gets the company and contact details with the payment.";
+        payNote.textContent = "The next step is Stripe. You pay the setup fee and the first period there. The company and contact details go with the payment.";
       } else {
-        button.textContent = "Send order to Isom";
-        payNote.textContent = "Card checkout is not turned on. Sending this form stores the order for Isom Technologies. No payment is taken.";
+        button.textContent = "Send order";
+        payNote.textContent = "Card checkout is not turned on. Sending this form stores the order. No payment is taken.";
       }
     })
     .catch(() => {
-      if (button) button.textContent = "Send order to Isom";
+      if (button) button.textContent = "Send order";
     });
 
   const problemsFor = () => {
@@ -184,7 +184,7 @@ if (form) {
         return;
       }
     } catch {
-      status.textContent = "Card checkout is unavailable. Saving the order for Isom Technologies.";
+      status.textContent = "Card checkout is unavailable. Saving the order.";
     }
     form.submit();
   });

@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import type { Faq } from '../lib/site';
+
+const title = 'Jobber alternative for time and billing | Contractor Revolution';
+const description =
+  'A Jobber alternative for shops that need hours, PTO, work orders, and billing. Public Jobber prices as of November 2026, next to Contractor Revolution.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compare', path: '/compare' },
+  { name: 'Jobber alternative', path: '/jobber-alternative' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Is Contractor Revolution a full Jobber replacement?',
+    a: 'No. Jobber sells quoting, scheduling, invoicing, payments, and marketing on its public plan pages. Contractor Revolution is time tracking, PTO, work orders, and a billing list. It does not sell payment processing, marketing tools, or a CRM.',
+  },
+  {
+    q: 'Where do the Jobber prices on this page come from?',
+    a: 'They were read from getjobber.com/pricing on November 3, 2026. Pricing as of November 2026. Jobber changes prices. Teams of 16 or more are asked to contact Jobber sales, so the 20, 40, and 75 user figures are estimates: the 15-user plan plus $29 per extra user.',
+  },
+  {
+    q: 'Does the lower monthly price include setup?',
+    a: 'No. Contractor Revolution charges a one-time setup fee. Jobber does not charge a setup fee. Compare the monthly list price and the setup, not the monthly number alone.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/jobber-alternative" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Pricing as of November 2026</p>
+    <h1>A Jobber alternative when the job is the hours.</h1>
+    <p class="lede">
+      Jobber is field service software for quotes, schedules, invoices, and payments. Contractor Revolution is narrower: time, PTO, work orders, and billing, with your logo on the instance. Use this page if you are pricing both. Then open Jobber's own pricing page and check the numbers.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>No-commitment monthly price</h2>
+      <p class="prose">
+        Contractor Revolution prices are our rate card. Jobber Grow and Jobber Plus prices were taken from getjobber.com/pricing on November 3, 2026. Above 15 users, Jobber asks teams to contact sales. The starred numbers are the published 15-user no-commitment price plus $29 for each user past 15. They are estimates, not a quote from Jobber.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <caption>Monthly price by shop size. Pricing as of November 2026. Starred Jobber cells are estimates.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Users</th>
+              <th scope="col" class="num us">Contractor Revolution</th>
+              <th scope="col" class="num">Jobber Grow</th>
+              <th scope="col" class="num">Jobber Plus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">5</th><td class="num us">$239</td><td class="num">$299</td><td class="num">$499</td></tr>
+            <tr><th scope="row">10</th><td class="num us">$329</td><td class="num">$399</td><td class="num">$599</td></tr>
+            <tr><th scope="row">20</th><td class="num us">$429</td><td class="num">$644*</td><td class="num">$844*</td></tr>
+            <tr><th scope="row">40</th><td class="num us">$529</td><td class="num">$1,224*</td><td class="num">$1,424*</td></tr>
+            <tr><th scope="row">75</th><td class="num us">$729</td><td class="num">$2,239*</td><td class="num">$2,439*</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">* Estimate only. Confirm on <a href="https://www.getjobber.com/pricing/">getjobber.com/pricing</a>. The full bands, including Connect and annual billing, are on the <a href="/compare">comparison page</a>.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>What Jobber publishes that we do not sell</h2>
+      <p class="prose">
+        On its public pages, Jobber describes quotes, online booking, invoices, card payments, automated reminders, QuickBooks sync on higher plans, two-way texting, job costing, and marketing tools. Plan names are Core, Connect, Grow, and Plus. Features are gated by plan. This page does not guess which feature sits in which plan. Read Jobber's pricing page for that.
+      </p>
+      <p class="prose">
+        Jobber's published no-commitment prices, checked November 3, 2026, include Core at $49 for 1 user, Grow from $199 to $499 depending on the user band, and Plus from $499 to $699 for 5, 10, or 15 users. Annual billing is lower. Extra users are listed at $29 a month. Teams of 16 or more are contact sales.
+      </p>
+      <p class="prose">
+        Jobber does not charge a setup fee. Its materials have described Plus onboarding with a stated value of $599 and data import with a stated value of $499. Those are Jobber's figures from the November 3, 2026 check, not a price we add on top.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>What you are comparing it with</h2>
+      <ul>
+        <li>Time from the phone, on a work order.</li>
+        <li>PTO requests and hour balances.</li>
+        <li>A billing list that keeps finished work until it is billed.</li>
+        <li>A weekly summary for payroll. The close is meant to take 15 minutes or less.</li>
+        <li>Your logo and colors, and setup around the way you already run work.</li>
+        <li>Every feature on every tier. The tier is headcount. A user is anyone who logs in.</li>
+      </ul>
+      <p class="prose">
+        Our setup fee is real money: $1,500, $2,500, $4,000, $6,000, or from $9,500, by tier. It is not waived on annual prepay. Annual prepay on our side is 15% off the monthly fee, paid up front.
+      </p>
+      <h2>Who should pick which</h2>
+      <p class="prose">
+        Pick Jobber if you need the customer side: quotes, invoices, card payments, reminders, and the marketing tools on the plan you buy. Pick Contractor Revolution if the hole in the shop is hours, PTO, work orders, and jobs that never get billed, and you want the software in your name.
+      </p>
+      <p class="prose">
+        Shops already on Contractor Revolution are Isom Electric and South Pointe Construction. That is a list of names, not a score.
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">Our rate card</a>
+        <a class="button secondary" href="/order">Price a seat count</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

@@ -1,32 +1,51 @@
 ---
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const items = [
-  { href: path === "/" ? "#short" : "/#short", label: "How it works" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/compare", label: "Compare" },
-  { href: "/about", label: "About" },
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/#short', label: 'How it works', match: '' },
+  { href: '/pricing', label: 'Pricing', match: '/pricing' },
+  { href: '/compare', label: 'Compare', match: '/compare' },
+  { href: '/resources', label: 'Resources', match: '/resources' },
+  { href: '/about', label: 'About', match: '/about' },
 ];
-const current = (href) => (path === href ? "page" : undefined);
+
+function current(match: string) {
+  if (!match) return undefined;
+  if (match === '/resources') {
+    return path === '/resources' || path.startsWith('/resources/') || path.startsWith('/trades') || path.startsWith('/tools') || path === '/faq' || path.endsWith('-alternative')
+      ? 'page'
+      : undefined;
+  }
+  return path === match ? 'page' : undefined;
+}
 ---
 
 <header class="site-header">
   <div class="wrap nav-bar">
-    <a class="wordmark" href="/" aria-current={current("/")}>
-      <span class="mark" aria-hidden="true">CR</span>
-      <span>Contractor Revolution</span>
+    <a class="wordmark" href="/">
+      <img src="/logo.png" width="483" height="120" alt="Contractor Revolution. Time app. Your brand. Your control." />
     </a>
     <nav class="nav-links" aria-label="Primary">
-      {items.map((item) => (
-        <a href={item.href} aria-current={current(item.href)}>{item.label}</a>
-      ))}
-      <a class="button" href="/order" aria-current={current("/order")}>Order</a>
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={current(link.match)}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="button" href="/order" aria-current={path === '/order' ? 'page' : undefined}>Order</a>
     </nav>
     <details class="nav-toggle">
       <summary>Menu</summary>
       <div class="menu">
-        {items.map((item) => (
-          <a href={item.href}>{item.label}</a>
-        ))}
+        {
+          links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))
+        }
+        <a href="/trades">Trades</a>
+        <a href="/tools">Free tools</a>
+        <a href="/faq">FAQ</a>
         <a href="/order">Order</a>
       </div>
     </details>

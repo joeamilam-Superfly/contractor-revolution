@@ -1,0 +1,127 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'Labor burden calculator | Contractor Revolution';
+const description =
+  'Free fully loaded hourly cost calculator for contractors. Wage, employer taxes, workers comp, benefits, and PTO. No account. Pricing as of your own numbers.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Tools', path: '/tools' },
+  { name: 'Labor burden', path: '/tools/labor-burden' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Does the 7.65% cover all employer taxes?',
+    a: 'No. 7.65% is the employer share of Social Security (6.2%) and Medicare (1.45%) on wages under the Social Security wage base. The wage base changes by year. Federal and state unemployment, and any local tax, are extra. Change the percent or add those dollars under other annual cost.',
+  },
+  {
+    q: 'Why is PTO not added as a dollar cost?',
+    a: 'If the person is paid for PTO, those hours are already inside wage times hours paid. Adding PTO pay again would count it twice. The calculator only removes PTO hours from the hours you can put on a job.',
+  },
+  {
+    q: 'Is the result a billing rate?',
+    a: 'No. It is the cost of an hour before profit. Add your own margin. This page does not suggest one.',
+  },
+  {
+    q: 'Does overtime change the number?',
+    a: 'The calculator uses the base wage you type. If a lot of hours are overtime, the true cost is higher. Raise the wage, or add the extra premium under other annual cost.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/tools/labor-burden" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Free tool</p>
+    <h1>Fully loaded hourly cost.</h1>
+    <p class="lede">
+      A $30 wage is not a $30 hour on the job. Taxes, comp, benefits, and paid time off sit on top. Type your numbers. The page does not use a national average.
+    </p>
+  </div>
+  <div class="wrap tool-layout">
+    <form id="burden-form" class="tool-form">
+      <div class="form-row">
+        <label for="wage">Base hourly wage</label>
+        <input id="wage" name="wage" type="number" inputmode="decimal" min="0" step="0.01" value="30" required />
+      </div>
+      <div class="form-row">
+        <label for="paid-hours">Hours you pay per year</label>
+        <input id="paid-hours" name="paid-hours" type="number" inputmode="decimal" min="1" step="1" value="2080" required />
+        <p class="hint">2080 is 40 hours times 52 weeks. Change it if your year is different.</p>
+      </div>
+      <div class="form-row">
+        <label for="tax-pct">Employer payroll tax, percent of wages</label>
+        <input id="tax-pct" name="tax-pct" type="number" inputmode="decimal" min="0" step="0.01" value="7.65" required />
+        <p class="hint">Starts at 7.65 for employer Social Security and Medicare only. Add unemployment if you want it in this percent.</p>
+      </div>
+      <div class="form-row">
+        <label for="comp-pct">Workers comp, percent of wages</label>
+        <input id="comp-pct" name="comp-pct" type="number" inputmode="decimal" min="0" step="0.01" value="0" required />
+        <p class="hint">Use the rate on your policy. Leave 0 if you are adding comp somewhere else.</p>
+      </div>
+      <div class="form-row">
+        <label for="benefits">Benefits per person, per year</label>
+        <input id="benefits" name="benefits" type="number" inputmode="decimal" min="0" step="1" value="0" required />
+        <p class="hint">Health insurance, retirement match, and other benefits you pay. Dollars, not a percent.</p>
+      </div>
+      <div class="form-row">
+        <label for="other">Other annual cost on this person</label>
+        <input id="other" name="other" type="number" inputmode="decimal" min="0" step="1" value="0" required />
+        <p class="hint">Truck, phone, small tools, or unemployment tax if you did not put it in the percent. Skip overhead you already load on the bid a different way, or you will count it twice.</p>
+      </div>
+      <div class="form-row">
+        <label for="pto-hours">PTO hours paid and not worked</label>
+        <input id="pto-hours" name="pto-hours" type="number" inputmode="decimal" min="0" step="1" value="0" required />
+        <p class="hint">Holiday and vacation hours you pay. They reduce productive hours. They are not added as a second wage.</p>
+      </div>
+      <button type="submit">Calculate</button>
+    </form>
+    <div class="result-box" aria-live="polite">
+      <p class="quote-kicker">Cost</p>
+      <p id="burden-error" class="errors" hidden></p>
+      <div id="burden-out">
+        <dl class="lines">
+          <dt>Wages</dt>
+          <dd id="r-wages">$0</dd>
+          <dt>Payroll tax</dt>
+          <dd id="r-tax">$0</dd>
+          <dt>Workers comp</dt>
+          <dd id="r-comp">$0</dd>
+          <dt>Benefits</dt>
+          <dd id="r-benefits">$0</dd>
+          <dt>Other</dt>
+          <dd id="r-other">$0</dd>
+          <dt>Annual cost</dt>
+          <dd id="r-total">$0</dd>
+          <dt>Productive hours</dt>
+          <dd id="r-productive">0</dd>
+        </dl>
+        <p class="quote-kicker">Per paid hour</p>
+        <p class="due" id="r-paid-hour">$0</p>
+        <p class="quote-kicker">Per hour on a job</p>
+        <p class="due" id="r-job-hour">$0</p>
+        <p class="fine">Per hour on a job is annual cost divided by productive hours. That is the number to beat before you add profit. The worked example is in the <a href="/resources/fully-loaded-labor-rate">labor rate article</a>.</p>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>The formula, in one place</h2>
+      <ol>
+        <li>Annual wages = base wage times hours you pay.</li>
+        <li>Payroll tax and workers comp = those wages times the percents you entered.</li>
+        <li>Annual cost = wages + tax + comp + benefits + other.</li>
+        <li>Productive hours = hours you pay, minus PTO hours not worked.</li>
+        <li>Cost per hour on a job = annual cost divided by productive hours.</li>
+      </ol>
+      <p class="prose">Nothing you type is stored on a server. A refresh clears it.</p>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+  <script>
+    import '../../scripts/labor-burden.ts';
+  </script>
+</Base>

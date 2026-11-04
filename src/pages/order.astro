@@ -1,23 +1,24 @@
 ---
-import Base from "../layouts/Base.astro";
-import { MAX_SEATS, MIN_SEATS, TIERS, quote, quoteText } from "../../shared/pricing.mjs";
-import { CONTACT } from "../../shared/contact.mjs";
+import Base from '../layouts/Base.astro';
 
-const initial = quoteText(quote(10), "monthly");
-const presets = TIERS.map((tier) => tier.included);
-const description = "Pick a seat count, see the tier, extra users, setup fee, and monthly or annual total, then send the order to Isom Technologies.";
+const title = 'Order | Contractor Revolution';
+const description =
+  'Pick a seat count, see the tier, extra users, setup fee, and monthly or annual total, then send the order.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Order', path: '/order' },
+];
 ---
 
-<Base title="Order" description={description}>
+<Base title={title} description={description} path="/order" crumbs={crumbs}>
   <div class="wrap page-hero">
     <p class="kicker">Order</p>
     <h1>Price the seats, then send it.</h1>
     <p class="lede">
-      Pick how many people will log in. The total uses the tier that costs less, with extra users when that is the lower number.
-      A user is anyone who logs in, in the field or in the office.
+      Pick how many people will log in. The total uses the tier that costs less, with extra users when that is the lower number. A user is anyone who logs in, in the field or in the office.
     </p>
   </div>
-
   <form
     id="order-form"
     class="wrap order-layout"
@@ -28,9 +29,7 @@ const description = "Pick a seat count, see the tier, extra users, setup fee, an
     data-netlify-honeypot="bot-field"
   >
     <input type="hidden" name="form-name" value="order" />
-    <p class="hp">
-      <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-    </p>
+    <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
     <input type="hidden" name="tier" value="" />
     <input type="hidden" name="extra_seats" value="" />
     <input type="hidden" name="monthly_fee" value="" />
@@ -38,16 +37,17 @@ const description = "Pick a seat count, see the tier, extra users, setup fee, an
     <input type="hidden" name="annual_year" value="" />
     <input type="hidden" name="setup_fee" value="" />
     <input type="hidden" name="due_today" value="" />
-
     <div class="order-controls">
       <div class="form-row">
         <label for="seats">How many people will log in?</label>
         <div class="presets" role="group" aria-label="Common shop sizes">
-          {presets.map((count) => (
-            <button type="button" data-seats={String(count)} aria-pressed={count === 10 ? "true" : "false"}>{count}</button>
-          ))}
+          <button type="button" data-seats="5" aria-pressed="false">5</button>
+          <button type="button" data-seats="10" aria-pressed="true">10</button>
+          <button type="button" data-seats="20" aria-pressed="false">20</button>
+          <button type="button" data-seats="40" aria-pressed="false">40</button>
+          <button type="button" data-seats="75" aria-pressed="false">75</button>
         </div>
-        <input id="seats" name="seats" type="number" inputmode="numeric" min={MIN_SEATS} max={MAX_SEATS} step="1" value="10" required />
+        <input id="seats" name="seats" type="number" inputmode="numeric" min="1" max="200" step="1" value="10" required />
       </div>
       <fieldset class="radios">
         <legend>Billing</legend>
@@ -55,34 +55,31 @@ const description = "Pick a seat count, see the tier, extra users, setup fee, an
         <label><input type="radio" name="billing" value="annual" /> Annual prepay, 15% off</label>
       </fieldset>
     </div>
-
     <div class="quote-box" id="quote" aria-live="polite">
-      <p class="quote-kicker" id="q-kicker">{initial.kicker}</p>
-      <h2 id="q-tier">{initial.tier}</h2>
-      <p id="q-seats">{initial.seats}</p>
-      <p id="q-extra">{initial.extraLine}</p>
+      <p class="quote-kicker" id="q-kicker">Monthly</p>
+      <h2 id="q-tier">Crew</h2>
+      <p id="q-seats">10 users</p>
+      <p id="q-extra">No extra users. Crew includes up to 10 users.</p>
       <dl class="lines">
         <dt>Monthly fee</dt>
-        <dd id="q-monthly">{initial.monthly}</dd>
+        <dd id="q-monthly">$329</dd>
         <dt>Annual prepay</dt>
-        <dd id="q-annual">{initial.annual}</dd>
+        <dd id="q-annual">$280 a month, $3,360 for the year</dd>
         <dt>Setup</dt>
-        <dd id="q-setup">{initial.setup}</dd>
+        <dd id="q-setup">$2,500</dd>
         <dt>Extra user rate</dt>
-        <dd id="q-extra-rate">{initial.extraRate}</dd>
+        <dd id="q-extra-rate">$19 a month, $16 on annual prepay</dd>
       </dl>
       <p class="quote-kicker">Due today</p>
-      <p class="due" id="q-due">{initial.due}</p>
-      <p id="q-due-detail">{initial.dueDetail}</p>
-      <p id="q-alt">{initial.alt}</p>
-      <p id="q-note">{initial.note}</p>
-      <p id="q-setup-note">{initial.setupNote}</p>
+      <p class="due" id="q-due">$2,829</p>
+      <p id="q-due-detail">setup $2,500 + $329 for the first month.</p>
+      <p id="q-alt">Annual prepay would be $5,860 today, $588 less than twelve monthly payments.</p>
+      <p id="q-note">10 users move up to Crew. Starter plus 5 extra users would be $334, and Crew is $329.</p>
+      <p id="q-setup-note"></p>
     </div>
-
     <div class="order-form">
       <div id="form-errors" class="errors" hidden tabindex="-1"></div>
       <p id="form-status" class="fine" role="status"></p>
-
       <div class="form-row">
         <label for="company">Company</label>
         <input id="company" name="company" autocomplete="organization" maxlength="120" required />
@@ -103,18 +100,16 @@ const description = "Pick a seat count, see the tier, extra users, setup fee, an
         <label for="notes">Notes</label>
         <textarea id="notes" name="notes" maxlength="480"></textarea>
       </div>
-
       <p id="pay-note">
-        Sending the order stores it for {CONTACT.vendor}. If card checkout is available, the button takes you to Stripe
-        to pay the setup fee and the first period. If it is not, no payment is taken and Isom follows up.
+        Sending the order stores it. If card checkout is available, the button takes you to Stripe to pay the setup fee and the first period. If it is not, no payment is taken and we follow up.
       </p>
       <button id="place-order" type="submit">Place order</button>
       <noscript>
-        <p>The total above starts at 10 users. Without JavaScript it will not follow the seat count. {CONTACT.vendor} will price the number you enter.</p>
+        <p>The total above starts at 10 users. Without JavaScript it will not follow the seat count. We will price the number you enter.</p>
       </noscript>
     </div>
   </form>
   <script>
-    import "../scripts/order.js";
+    import '../scripts/order.js';
   </script>
 </Base>

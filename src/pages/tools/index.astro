@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Free contractor tools | Contractor Revolution';
+const description =
+  'Free tools from Contractor Revolution: a labor burden calculator and a timesheet-to-payroll checklist. No account required.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Tools', path: '/tools' },
+];
+---
+
+<Base title={title} description={description} path="/tools" crumbs={crumbs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Free tools</p>
+    <h1>Two tools you can use before you buy anything.</h1>
+    <p class="lede">
+      Both run in the browser. Nothing is uploaded. They are here because the math and the Friday close are the same problems the software is for.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <div class="card-grid">
+        <a href="/tools/labor-burden">
+          <h2>Labor burden calculator</h2>
+          <p>Turn a base wage, taxes, workers comp, benefits, and PTO into a cost per hour on a job.</p>
+        </a>
+        <a href="/tools/timesheet-payroll-checklist">
+          <h2>Timesheet-to-payroll checklist</h2>
+          <p>Close the week: missing time, overtime, PTO, and a total you can hand to payroll.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
