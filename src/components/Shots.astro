@@ -1,0 +1,34 @@
+---
+import shots from "../data/screenshots.json";
+---
+
+<div>
+  {shots.map((shot, index) => {
+    const frames = [
+      shot.desktop ? { ...shot.desktop, label: "Desktop" } : null,
+      shot.phone ? { ...shot.phone, label: "Phone" } : null,
+    ].filter(Boolean);
+    const phoneOnly = Boolean(shot.phone) && !shot.desktop;
+    return (
+      <section class="shot-pair" aria-labelledby={`shot-${shot.id}`}>
+        <h3 id={`shot-${shot.id}`}>{shot.title}</h3>
+        <p>{shot.caption}</p>
+        <div class:list={["pair", frames.length === 1 && "single", phoneOnly && "phone-only"]}>
+          {frames.map((frame, frameIndex) => (
+            <figure class={frame.label === "Phone" ? "phone" : undefined}>
+              <img
+                src={frame.src}
+                width={frame.width}
+                height={frame.height}
+                alt={frame.alt}
+                loading={index === 0 && frameIndex === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <figcaption>{frame.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+</div>
