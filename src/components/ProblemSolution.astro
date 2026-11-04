@@ -1,25 +1,82 @@
 ---
+import PairIcon from './PairIcon.astro';
+
 interface Props {
   pains: string[];
   fixes: string[];
+  painIcons?: string[];
+  fixIcons?: string[];
+  solutionId?: string;
 }
 
-const { pains, fixes } = Astro.props;
+const defaultPainIcons = ['unbilled', 'chase', 'texts', 'pto-miss', 'forced', 'rekey'];
+const defaultFixIcons = ['billed', 'fast', 'phone', 'pto-kept', 'brand-process', 'invoice'];
+
+const {
+  pains,
+  fixes,
+  painIcons = defaultPainIcons,
+  fixIcons = defaultFixIcons,
+  solutionId = 'solution',
+} = Astro.props;
+
+if (pains.length !== fixes.length) {
+  throw new Error('Problem and solution lists must be the same length.');
+}
+
+function items(lines: string[], icons: string[], kind: string) {
+  return lines.map((text, index) => {
+    const icon = icons[index];
+    if (!icon) throw new Error(`Missing ${kind} icon at ${index + 1}`);
+    return { text, icon, n: String(index + 1) };
+  });
+}
+
+const painItems = items(pains, painIcons, 'problem');
+const fixItems = items(fixes, fixIcons, 'solution');
 ---
 
 <section class="section" id="problem">
   <div class="wrap">
     <h2>The problem</h2>
-    <ol class="pain-list">
-      {pains.map((pain) => <li>{pain}</li>)}
+    <ol class="pair-grid">
+      {
+        painItems.map((item) => (
+          <li class="pair-card">
+            <div class="pair-head">
+              <span class="pair-icon">
+                <PairIcon name={item.icon} />
+              </span>
+              <span class="pair-num" aria-hidden="true">
+                {item.n}
+              </span>
+            </div>
+            <p>{item.text}</p>
+          </li>
+        ))
+      }
     </ol>
   </div>
 </section>
-<section class="section" id="solution">
+<section class="section" id={solutionId}>
   <div class="wrap">
     <h2>The solution</h2>
-    <ol class="fix-list">
-      {fixes.map((fix) => <li>{fix}</li>)}
+    <ol class="pair-grid is-solution">
+      {
+        fixItems.map((item) => (
+          <li class="pair-card">
+            <div class="pair-head">
+              <span class="pair-icon">
+                <PairIcon name={item.icon} />
+              </span>
+              <span class="pair-num" aria-hidden="true">
+                {item.n}
+              </span>
+            </div>
+            <p>{item.text}</p>
+          </li>
+        ))
+      }
     </ol>
   </div>
 </section>
