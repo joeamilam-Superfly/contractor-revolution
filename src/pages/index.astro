@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProblemSolution from '../components/ProblemSolution.astro';
 import { customers } from '../lib/site';
 
 const title = 'Contractor Revolution | Time, work orders, and billing';
@@ -30,33 +31,26 @@ const description =
     </aside>
   </div>
 
-  <section class="section" id="problem">
-    <div class="wrap">
-      <h2>The problem</h2>
-      <ol class="pain-list">
-        <li>Hours worked never get billed because paper timesheets and texts get lost.</li>
-        <li>Payroll takes hours every week chasing crews for their time.</li>
-        <li>Work orders live in texts, whiteboards, and email, so nobody knows the status.</li>
-        <li>PTO requests get lost, and arguments follow.</li>
-        <li>Off-the-shelf apps force your crew into someone else's process and brand.</li>
-        <li>Office staff re-key field data into billing.</li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section" id="short">
-    <div class="wrap">
-      <h2>The solution</h2>
-      <ol class="fix-list">
-        <li>Every hour is tracked against a work order and billed. We track every hour, and when the work is done we make sure it's billed.</li>
-        <li>Payroll takes 15 minutes or less. The week is already on the summary, so nobody spends Friday chasing the crew.</li>
-        <li>Time, PTO, and work orders all come from the phone. Employees track their time, PTO requests and scheduled work orders from their phone.</li>
-        <li>Your instance is branded with your own logo and colors.</li>
-        <li>The system is customized to your exact processes.</li>
-        <li>Billing reports are ready to invoice. The office does not retype the day.</li>
-      </ol>
-    </div>
-  </section>
+  <ProblemSolution
+    solutionId="short"
+    pains={[
+      'Hours worked never get billed because paper timesheets and texts get lost.',
+      'Payroll takes hours every week chasing crews for their time.',
+      'Work orders live in texts, whiteboards, and email, so nobody knows the status.',
+      'PTO requests get lost, and arguments follow.',
+      "Off-the-shelf apps force your crew into someone else's process and brand.",
+      'Office staff re-key field data into billing.',
+    ]}
+    fixes={[
+      "Every hour is tracked against a work order and billed. We track every hour, and when the work is done we make sure it's billed.",
+      'Payroll takes 15 minutes or less. The week is already on the summary, so nobody spends Friday chasing the crew.',
+      'Time, PTO, and work orders all come from the phone. Employees track their time, PTO requests and scheduled work orders from their phone.',
+      'Your instance is branded with your own logo and colors.',
+      'The system is customized to your exact processes.',
+      'Billing reports are ready to invoice. The office does not retype the day.',
+    ]}
+    fixIcons={['billed', 'fast', 'phone', 'brand', 'process', 'invoice']}
+  />
 
   <section class="section" id="included">
     <div class="wrap">

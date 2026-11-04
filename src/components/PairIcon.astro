@@ -1,0 +1,24 @@
+---
+import { pairIcons } from './pair-icons';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const body = pairIcons[name];
+if (!body) throw new Error(`Unknown pair icon: ${name}`);
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 48 48"
+  fill="none"
+  stroke="#002458"
+  stroke-width="2.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={body}
+/>
