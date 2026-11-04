@@ -1,0 +1,52 @@
+---
+import { company, mapUrl } from '../lib/site';
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="kicker">Product of Isom Technologies</p>
+      <p>
+        Contractor Revolution is time tracking, work orders, PTO, and billing for contractors. It is a product of <a href={company.url}>Isom Technologies</a>.
+      </p>
+      <p class="fine">© 2026 Isom Technologies</p>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <address>
+        Isom Technologies<br />
+        <a href={mapUrl}>{company.street}<br />{company.locality}, {company.region} {company.postal}</a><br />
+        <a href={`tel:${company.phoneTel}`}>{company.phoneDisplay}</a><br />
+        <a href={`mailto:${company.email}`}>{company.email}</a><br />
+        <a href={`mailto:${company.support}`}>{company.support}</a>
+      </address>
+    </div>
+    <div>
+      <h2>On this site</h2>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/pricing">Pricing</a>
+        <a href="/compare">Compared with Jobber and JobTread</a>
+        <a href="/jobber-alternative">Jobber alternative</a>
+        <a href="/jobtread-alternative">JobTread alternative</a>
+        <a href="/order">Place an order</a>
+        <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
+        <a href={company.url}>isomtechnologies.com</a>
+      </nav>
+    </div>
+    <div>
+      <h2>Trades and tools</h2>
+      <nav class="footer-links" aria-label="Trades and tools">
+        <a href="/trades/electrical">Electrical</a>
+        <a href="/trades/low-voltage">Low voltage and fiber</a>
+        <a href="/trades/hvac">HVAC</a>
+        <a href="/trades/plumbing">Plumbing</a>
+        <a href="/trades/general-contractors">General contractors</a>
+        <a href="/tools/labor-burden">Labor burden calculator</a>
+        <a href="/tools/timesheet-payroll-checklist">Payroll checklist</a>
+        <a href="/resources">Articles</a>
+      </nav>
+    </div>
+  </div>
+  <p class="wrap fine">{company.street}, {company.locality}, {company.region} {company.postal}</p>
+</footer>

@@ -1,0 +1,24 @@
+---
+import type { Faq } from '../lib/site';
+
+interface Props {
+  faqs: Faq[];
+  heading?: string;
+}
+
+const { faqs, heading = 'Questions' } = Astro.props;
+---
+
+<section class="section faq">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    {
+      faqs.map((faq) => (
+        <details>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

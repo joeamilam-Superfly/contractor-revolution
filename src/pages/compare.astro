@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Compared with Jobber and JobTread | Contractor Revolution';
+const description =
+  'Monthly prices for Contractor Revolution, Jobber Grow, Jobber Plus, and JobTread at 5, 10, 20, 40, and 75 users. Pricing as of November 2026.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Compare', path: '/compare' },
+];
+---
+
+<Base title={title} description={description} path="/compare" crumbs={crumbs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Pricing as of November 2026</p>
+    <h1>Compared with Jobber and JobTread</h1>
+    <p class="lede">
+      The shop-size table is no-commitment monthly price. Contractor Revolution's numbers are our rate card. Jobber and JobTread numbers were taken from their pricing pages on November 3, 2026. Competitor prices change. Confirm them before you buy.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <div class="table-scroll">
+        <table>
+          <caption>No-commitment monthly price by shop size. Jobber above 15 users is the 15-user plan plus $29 per extra user, an estimate, because Jobber asks larger teams to contact sales.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Users</th>
+              <th scope="col" class="num us">Contractor Revolution</th>
+              <th scope="col" class="num">Jobber Grow</th>
+              <th scope="col" class="num">Jobber Plus</th>
+              <th scope="col" class="num">JobTread</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">5</th><td class="num us">$239</td><td class="num">$299</td><td class="num">$499</td><td class="num">$279</td></tr>
+            <tr><th scope="row">10</th><td class="num us">$329</td><td class="num">$399</td><td class="num">$599</td><td class="num">$379</td></tr>
+            <tr><th scope="row">20</th><td class="num us">$429</td><td class="num">$644*</td><td class="num">$844*</td><td class="num">$529</td></tr>
+            <tr><th scope="row">40</th><td class="num us">$529</td><td class="num">$1,224*</td><td class="num">$1,424*</td><td class="num">$679</td></tr>
+            <tr><th scope="row">75</th><td class="num us">$729</td><td class="num">$2,239*</td><td class="num">$2,439*</td><td class="num">$854</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">* Jobber estimate: 15-user plan plus $29 a month for each user past 15. On a small screen, swipe the table sideways. Pricing as of November 2026.</p>
+      <h2>What the monthly numbers say</h2>
+      <p class="prose">
+        On every shop size in the table, Contractor Revolution's no-commitment monthly price is lower than Jobber Grow, Jobber Plus, and JobTread. That is a monthly list-price comparison. It does not include our setup fee. Jobber and JobTread do not charge a setup fee. Jobber's figures above 15 users are estimates.
+      </p>
+      <p>
+        <a href="/jobber-alternative">Jobber alternative</a> · <a href="/jobtread-alternative">JobTread alternative</a>
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>What the prices do and do not include</h2>
+      <ul>
+        <li>Every Contractor Revolution tier includes every feature. A user is anyone who logs in, field or office.</li>
+        <li>Jobber sells Core, Connect, Grow, and Plus as separate plans, priced by features and by user band. This page does not guess which features sit in which Jobber plan.</li>
+        <li>JobTread includes every feature and prices by user count. Outside parties and light field crew are free users. On Contractor Revolution, those people count if they log in.</li>
+        <li>Jobber's extra user is $29 a month. Ours is $19, $19, $15, $12, or $8, depending on the tier.</li>
+        <li>Jobber does not charge a setup fee. It bundles onboarding by plan, values Plus onboarding at $599, and values data import at $499. Teams of 16 or more are asked to contact sales.</li>
+        <li>JobTread does not charge a setup fee, and implementation is free.</li>
+        <li>Our setup fee is the one-time go-live: logo and colors, roster, PINs, jobs, locations, a smoke test, and training. It is not waived.</li>
+        <li>Contractor Revolution does not sell payment processing, marketing tools, or a CRM.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Jobber's published plans</h2>
+      <p>Checked November 3, 2026. Ranges are the published bands, not a price we calculated for a specific headcount.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>Jobber plan prices by commitment. No-commit, one-year, and annual.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Plan</th>
+              <th scope="col">Users</th>
+              <th scope="col" class="num">No commit</th>
+              <th scope="col" class="num">1 year</th>
+              <th scope="col" class="num">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Core</th><td>1</td><td class="num">$49</td><td class="num">$39</td><td class="num">$29</td></tr>
+            <tr><th scope="row">Connect</th><td>1, 5, 10, or 15</td><td class="num">$139 to $399</td><td class="num">$119 to $339</td><td class="num">$99 to $299</td></tr>
+            <tr><th scope="row">Grow</th><td>1, 5, 10, or 15</td><td class="num">$199 to $499</td><td class="num">$169 to $429</td><td class="num">$149 to $399</td></tr>
+            <tr><th scope="row">Plus</th><td>5, 10, or 15</td><td class="num">$499 to $699</td><td class="num">$439 to $599</td><td class="num">$399 to $529</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>JobTread's published rates</h2>
+      <p>Checked November 3, 2026. The base annual price is 20% off. Added users have their own annual rates.</p>
+      <div class="table-scroll">
+        <table>
+          <caption>JobTread monthly and annual per-user rates.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">Monthly</th>
+              <th scope="col" class="num">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Base, 1 user</th><td class="num">$199</td><td class="num">20% off</td></tr>
+            <tr><th scope="row">Users 2 to 10</th><td class="num">$20</td><td class="num">$16</td></tr>
+            <tr><th scope="row">Users 11 to 20</th><td class="num">$15</td><td class="num">$12</td></tr>
+            <tr><th scope="row">Users 21 to 30</th><td class="num">$10</td><td class="num">$8</td></tr>
+            <tr><th scope="row">Users 31 and up</th><td class="num">$5</td><td class="num">$4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">
+        Sources: <a href="https://www.getjobber.com/pricing/">getjobber.com/pricing</a> · <a href="https://www.jobtread.com/pricing">jobtread.com/pricing</a>. Both checked November 3, 2026. Pricing as of November 2026.
+      </p>
+    </div>
+  </section>
+</Base>

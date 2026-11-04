@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'Electrical contractor time tracking | Contractor Revolution';
+const description =
+  'Work orders, hours, PTO, and billing for electrical contractors. Isom Electric uses Contractor Revolution. Your logo and colors. From Isom Technologies.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+  { name: 'Electrical', path: '/trades/electrical' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Does Isom Electric use Contractor Revolution?',
+    a: 'Yes. Isom Electric, an electrical contractor, uses Contractor Revolution for time tracking, work orders, PTO, and billing.',
+  },
+  {
+    q: 'Do apprentices and the office count as users?',
+    a: 'Anyone who logs in counts. A helper in the field and the person closing payroll are the same kind of user.',
+  },
+  {
+    q: 'Does this replace estimating software?',
+    a: 'No. Contractor Revolution tracks the hours on the work order and keeps finished work on a billing list. It does not do takeoff, a price book, or customer proposals.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades/electrical" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Electrical</p>
+    <h1>Time, work orders, and billing for electrical contractors.</h1>
+    <p class="lede">
+      Isom Electric, an electrical contractor, uses Contractor Revolution for time tracking, work orders, PTO, and billing.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>A service call and a rough-in are both work orders</h2>
+      <p class="prose">
+        One day can hold a panel change in the morning and a school addition in the afternoon. If both sets of hours land in a notes app, the office guesses which job to bill. In Contractor Revolution each ticket is a work order: the site, the crew, and the hours logged against it.
+      </p>
+      <p class="prose">
+        The foreman and the helper enter time from the phone. The office sees the same hours on the team list, with the work order named on the row. When the job is done, it stays on the billing list until someone marks it billed. Payroll uses the weekly summary. Billing uses the work order. Those are two different lists, on purpose.
+      </p>
+      <h2>What the phone is for</h2>
+      <ul>
+        <li>Today's scheduled work orders, with the site on the screen.</li>
+        <li>Hours logged to that order, with a short note if the day did not match the plan.</li>
+        <li>PTO requests, in hours, for the office to approve.</li>
+      </ul>
+      <h2>What this is not</h2>
+      <p class="prose">
+        It is not a CRM, a dispatch map, or a payment app. It does not build a flat-rate book. If you need those, keep the tool you already use for them. Contractor Revolution is the hours, the PTO, the work orders, and the list of work that still needs a bill.
+      </p>
+      <p class="prose">
+        Your instance carries your logo and your colors. Setup loads the roster, the PINs, the jobs, and the locations, then trains the people who will use it.
+      </p>
+      <div class="actions">
+        <a class="button" href="/pricing">See pricing</a>
+        <a class="button secondary" href="/order">Place an order</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

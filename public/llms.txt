@@ -1,0 +1,68 @@
+# Contractor Revolution
+
+> Contractor Revolution is time tracking, work orders, PTO, and billing for trade contractors. Each shop gets its own instance with its own logo and colors, set up around the way that shop already runs work. It is a product of Isom Technologies, Pendleton, SC.
+
+Contractor Revolution does not sell payment processing, marketing tools, or a CRM. A user is anyone who logs in, in the field or in the office. Every tier includes every feature. The tier changes the included headcount, the setup fee, and the extra-user rate.
+
+Last updated: 2026-11-04.
+
+## Who uses it
+
+Names only. No quotes and no performance claims.
+
+- Isom Electric, an electrical contractor: time tracking, work orders, PTO, and billing.
+- South Pointe Construction: time tracking, work orders, PTO, and billing.
+- Isom Technologies: its own low-voltage and fiber work, for time tracking, work orders, PTO, and billing.
+
+## Pricing
+
+Monthly prices are no-commitment. Annual prepay is 15% off the monthly fee, rounded to the nearest dollar, paid up front for the year. Extra users on annual prepay get the same 15% off, rounded per user. Setup is one time and is not discounted.
+
+- Starter, up to 5 users: $239 a month, $203 a month on annual prepay ($2,436 for the year), setup $1,500, extra user $19 a month ($16 annual).
+- Crew, up to 10 users: $329 a month, $280 a month on annual prepay ($3,360 for the year), setup $2,500, extra user $19 a month ($16 annual).
+- Company, up to 20 users: $429 a month, $365 a month on annual prepay ($4,380 for the year), setup $4,000, extra user $15 a month ($13 annual).
+- Pro, up to 40 users: $529 a month, $450 a month on annual prepay ($5,400 for the year), setup $6,000, extra user $12 a month ($10 annual).
+- Enterprise, up to 75 users: $729 a month, $620 a month on annual prepay ($7,440 for the year), setup from $9,500, extra user $8 a month ($7 annual).
+
+Extra users past the included count use that tier's rate until the next tier is the lower price. Then the order moves up. Examples: 9 users stay on Starter ($315). 10 users move to Crew ($329). 56 users stay on Pro ($721). 57 users move to Enterprise ($729).
+
+## What it does
+
+- Phone time entry against a job and a work order. The office sees the same hours.
+- Work orders with the site, the crew, and the hours logged.
+- PTO requests from the phone. Balances are kept in hours.
+- A billing list. Finished work stays there until it is billed. Payroll does not clear it.
+- A weekly summary of regular hours, overtime, leave, and total paid hours for payroll. The close is meant to take 15 minutes or less.
+- Setup: logo and colors, admin login, roster, PINs, jobs, locations, a smoke test, and training. Company and above add a materials catalog import and starting PTO balances. Enterprise adds data migration.
+
+## Contact
+
+- Isom Technologies
+- 7205 US 76, Pendleton, SC 29670
+- 864-437-1827
+- info@isomtechnologies.com
+- support@isomtechnologies.com
+- https://isomtechnologies.com
+- https://contractor-revolution.co
+
+## Pages
+
+- [Home](https://contractor-revolution.co/): Product overview, sample screens, customers, and prices.
+- [Pricing](https://contractor-revolution.co/pricing): Full rate card.
+- [Compare](https://contractor-revolution.co/compare): Monthly prices next to Jobber and JobTread. Pricing as of November 2026.
+- [Jobber alternative](https://contractor-revolution.co/jobber-alternative): What Jobber sells that this product does not, with public prices.
+- [JobTread alternative](https://contractor-revolution.co/jobtread-alternative): User-count rules and public JobTread rates.
+- [FAQ](https://contractor-revolution.co/faq): Users, price, setup, PTO, billing, customers.
+- [Electrical](https://contractor-revolution.co/trades/electrical): Electrical contractors. Isom Electric uses it.
+- [Low voltage and fiber](https://contractor-revolution.co/trades/low-voltage): Isom Technologies uses it for this work.
+- [HVAC](https://contractor-revolution.co/trades/hvac): Separate work orders for maintenance and changeouts.
+- [Plumbing](https://contractor-revolution.co/trades/plumbing): One work order per call.
+- [General contractors](https://contractor-revolution.co/trades/general-contractors): Own crews. South Pointe Construction uses it.
+- [Labor burden calculator](https://contractor-revolution.co/tools/labor-burden): Fully loaded hourly cost from numbers you type.
+- [Payroll checklist](https://contractor-revolution.co/tools/timesheet-payroll-checklist): Close a timesheet week.
+- [Fully loaded labor rate](https://contractor-revolution.co/resources/fully-loaded-labor-rate): The formula, with one labeled example.
+- [Close the week](https://contractor-revolution.co/resources/close-the-week-for-payroll): Friday payroll routine.
+- [Hours that get billed](https://contractor-revolution.co/resources/work-order-hours-that-get-billed): Keep billing separate from payroll.
+- [Order](https://contractor-revolution.co/order): Price a seat count and send it to Isom Technologies.
+- [About](https://contractor-revolution.co/about): Isom Technologies, Pendleton, SC.
+- [Full text](https://contractor-revolution.co/llms-full.txt): Longer product, pricing, and comparison notes.

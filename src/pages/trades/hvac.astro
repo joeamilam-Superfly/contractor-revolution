@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import type { Faq } from '../../lib/site';
+
+const title = 'HVAC time tracking and work orders | Contractor Revolution';
+const description =
+  'Work orders, crew hours, PTO, and a billing list for HVAC shops. Maintenance and changeouts stay on separate orders. A product of Isom Technologies.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trades', path: '/trades' },
+  { name: 'HVAC', path: '/trades/hvac' },
+];
+
+const faqs: Faq[] = [
+  {
+    q: 'Can maintenance and a changeout share one work order?',
+    a: 'You can, but you should not. Separate work orders keep the hours, the crew, and the bill on the right job.',
+  },
+  {
+    q: 'Does Contractor Revolution include a flat-rate price book?',
+    a: 'No. It does not sell a price book, dispatch board, or payment processing. It tracks hours, PTO, work orders, and which finished jobs still need a bill.',
+  },
+  {
+    q: 'How does PTO work in a busy season?',
+    a: 'Techs request hours from the phone. The office approves them. Approved leave shows on the weekly summary with the worked hours, so payroll is not a second conversation.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/trades/hvac" crumbs={crumbs} faqs={faqs}>
+  <div class="wrap page-hero">
+    <p class="kicker">HVAC</p>
+    <h1>Maintenance and changeouts do not share a timesheet line.</h1>
+    <p class="lede">
+      HVAC shops lose hours when a tune-up and an install get written on the same scrap of paper. Contractor Revolution puts each one on its own work order.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>What gets a work order</h2>
+      <p class="prose">
+        A maintenance visit gets a work order with the address and the tech. A changeout gets a different work order, often with a lead and a helper. Both people log hours from the phone against the order they were on. The office sees the split before Friday.
+      </p>
+      <p class="prose">
+        If the install runs into the next day, the hours stay on that work order. They do not have to be copied into a spreadsheet so the bill can be written later. When the job is done, it sits on the billing list until it is billed.
+      </p>
+      <h2>The week still has to close</h2>
+      <p class="prose">
+        The weekly summary is the payroll packet: regular hours, overtime, leave, and the total. PTO requests sit with the hour balance, not in a text thread. The product claim on payroll is simple: a closed week takes 15 minutes or less, because the hours are already on the people.
+      </p>
+      <h2>What we will not pretend to be</h2>
+      <p class="prose">
+        Contractor Revolution is not a load-calculation tool, a flat-rate book, or a call board. It will not text the customer that the tech is on the way. If that is the hole in the shop, this is the wrong product. If the hole is hours, PTO, work orders, and unbilled work, this is the product.
+      </p>
+      <p>Your shop gets its own instance, with your logo and your colors. <a href="/pricing">Pricing is by headcount.</a></p>
+      <div class="actions">
+        <a class="button" href="/order">Place an order</a>
+        <a class="button secondary" href="/tools/labor-burden">Labor burden calculator</a>
+      </div>
+    </div>
+  </section>
+  <FaqList faqs={faqs} />
+</Base>

@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Work order hours that get billed | Contractor Revolution';
+const description =
+  'How contractors keep finished work order hours on a billing list until the customer is billed, separate from the payroll close.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Hours that get billed', path: '/resources/work-order-hours-that-get-billed' },
+];
+---
+
+<Base title={title} description={description} path="/resources/work-order-hours-that-get-billed" crumbs={crumbs}>
+  <article class="wrap page-hero article">
+    <p class="kicker">Article</p>
+    <h1>Work order hours that get billed.</h1>
+    <p class="lede">
+      The crew got paid. The customer did not get a bill. That gap is where contracting shops donate labor. The fix is a list, not a better memory.
+    </p>
+  </article>
+  <section class="section">
+    <div class="wrap article">
+      <h2>Payroll and billing answer different questions</h2>
+      <p>
+        Payroll asks what you owe the person for the week. Billing asks what the customer still owes you for the job. A clean payroll file can sit next to a job that was never invoiced. If you treat "the week is closed" as "the jobs are billed," you will miss the second one.
+      </p>
+      <p>
+        Keep two lists. The weekly summary is for payroll. The billing list is for finished work that has not been billed. Closing one does not clear the other.
+      </p>
+      <h2>Put the hours on the work order while the day is still true</h2>
+      <p>
+        Hours entered on Friday from a notebook are already missing the small jobs. The person who did the work should log it to the work order the same day: the site, the order, the hours, and a note if the day changed. The office then sees the hours on that order without calling anyone.
+      </p>
+      <p>
+        A work order that is still open is not ready to bill. A work order that is done and unbilled should be obvious. If those two look the same in your stack of papers, the small jobs are the ones that fall out. They are finished, the crew is on the next call, and nobody writes the invoice.
+      </p>
+      <h2>Do not wait for the job to feel big enough</h2>
+      <p>
+        Service calls are easy to treat as "we will catch them at the end of the month." The end of the month is a pile. A finished call should hit the billing list the day it is done, even if you send invoices in a batch. The list is the batch. Your memory is not.
+      </p>
+      <p>
+        Longer jobs have the same leak in the middle. If you bill a draw from the contract and never look at the hours, you will not notice that the hours have already passed the labor in the price. You do not need a complicated job-cost system to see that. You need the hours sitting on the work order where the price can be compared by a person.
+      </p>
+      <h2>A status the office can trust</h2>
+      <p>
+        Useful statuses are plain. Needs a crew. In progress. Ready to bill. Billed. Unassigned work is not the same as ready to bill, and ready to bill is not the same as billed. If your current system has one bucket called "open," split it.
+      </p>
+      <p>
+        When something is marked billed, leave the hours on the order. You will need them when the customer asks what the bill is for, and when you look back at whether that kind of job made money. Deleting the time to "clean up" the screen deletes the only record you had.
+      </p>
+      <h2>What Contractor Revolution does here</h2>
+      <p>
+        The work order holds the site, the crew, and the hours. Finished work stays on the billing report until it is billed. The sample screens on the home page use made-up names and jobs so you can see the layout. They are not a customer's books.
+      </p>
+      <p>
+        The shops on it today are Isom Electric, South Pointe Construction, and Isom Technologies for its own low-voltage and fiber work. Each one uses it for time tracking, work orders, PTO, and billing. That is the whole claim.
+      </p>
+      <p>
+        If you want the Friday half of this, read <a href="/resources/close-the-week-for-payroll">how to close the week</a>. If you want the price of an hour before you bill it, use the <a href="/tools/labor-burden">labor burden calculator</a>.
+      </p>
+    </div>
+  </section>
+</Base>

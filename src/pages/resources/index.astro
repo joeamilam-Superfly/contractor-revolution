@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Resources for contractor hours and billing | Contractor Revolution';
+const description =
+  'Articles and free tools on fully loaded labor rates, closing the week for payroll, and work order hours that still need a bill.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path: '/resources' },
+];
+
+const articles = [
+  {
+    href: '/resources/fully-loaded-labor-rate',
+    name: 'Figure a fully loaded labor rate',
+    text: 'The five lines that turn a base wage into the cost of an hour on the job, and the mistakes that double-count PTO.',
+  },
+  {
+    href: '/resources/close-the-week-for-payroll',
+    name: 'Close the week for payroll',
+    text: 'A Friday order of work: missing people, overtime, PTO, and a total that matches the rows.',
+  },
+  {
+    href: '/resources/work-order-hours-that-get-billed',
+    name: 'Work order hours that get billed',
+    text: 'Why paid hours and billed hours are different lists, and how finished work stops hiding.',
+  },
+];
+---
+
+<Base title={title} description={description} path="/resources" crumbs={crumbs}>
+  <div class="wrap page-hero">
+    <p class="kicker">Resources</p>
+    <h1>Hours, payroll, and the bill.</h1>
+    <p class="lede">
+      Three short articles and two free tools. No download wall. The product pages are linked where they help.
+    </p>
+  </div>
+  <section class="section">
+    <div class="wrap">
+      <h2>Articles</h2>
+      <div class="card-grid">
+        {
+          articles.map((article) => (
+            <a href={article.href}>
+              <h3>{article.name}</h3>
+              <p>{article.text}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Also on this site</h2>
+      <ul>
+        <li><a href="/tools/labor-burden">Labor burden calculator</a></li>
+        <li><a href="/tools/timesheet-payroll-checklist">Timesheet-to-payroll checklist</a></li>
+        <li><a href="/trades">Trade pages</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/compare">Prices next to Jobber and JobTread</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>

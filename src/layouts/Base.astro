@@ -1,0 +1,81 @@
+---
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '@fontsource/source-sans-3/latin-700.css';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ogImage, productName, siteUrl, type Crumb, type Faq } from '../lib/site';
+import { absolute, pageGraph } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  crumbs?: Crumb[];
+  faqs?: Faq[];
+  robots?: string;
+}
+
+const { title, description, path, crumbs = [], faqs = [], robots = 'index,follow' } = Astro.props;
+const canonical = absolute(path);
+const image = `${siteUrl}${ogImage.path}`;
+const graph = pageGraph({ crumbs, faqs });
+const showCrumbs = crumbs.length > 1;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f3efe4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={productName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={ogImage.alt} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <Header />
+    <main id="content">
+      {
+        showCrumbs && (
+          <nav class="wrap" aria-label="Breadcrumb">
+            <ol class="crumbs">
+              {crumbs.map((crumb, index) => (
+                <li>
+                  {index === crumbs.length - 1 ? (
+                    <span aria-current="page">{crumb.name}</span>
+                  ) : (
+                    <a href={crumb.path}>{crumb.name}</a>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
